@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Lion-Primer/static/css/main.68ba72a5.chunk.css",
-    "main.js": "/Lion-Primer/static/js/main.da2129f6.chunk.js",
-    "main.js.map": "/Lion-Primer/static/js/main.da2129f6.chunk.js.map",
+    "main.js": "/Lion-Primer/static/js/main.9f802d83.chunk.js",
+    "main.js.map": "/Lion-Primer/static/js/main.9f802d83.chunk.js.map",
     "runtime-main.js": "/Lion-Primer/static/js/runtime-main.e8ce6ac9.js",
     "runtime-main.js.map": "/Lion-Primer/static/js/runtime-main.e8ce6ac9.js.map",
-    "static/js/2.9db468ff.chunk.js": "/Lion-Primer/static/js/2.9db468ff.chunk.js",
-    "static/js/2.9db468ff.chunk.js.map": "/Lion-Primer/static/js/2.9db468ff.chunk.js.map",
+    "static/js/2.5a4a1b97.chunk.js": "/Lion-Primer/static/js/2.5a4a1b97.chunk.js",
+    "static/js/2.5a4a1b97.chunk.js.map": "/Lion-Primer/static/js/2.5a4a1b97.chunk.js.map",
     "static/js/3.c9cbcc6f.chunk.js": "/Lion-Primer/static/js/3.c9cbcc6f.chunk.js",
     "static/js/3.c9cbcc6f.chunk.js.map": "/Lion-Primer/static/js/3.c9cbcc6f.chunk.js.map",
     "index.html": "/Lion-Primer/index.html",
     "static/css/main.68ba72a5.chunk.css.map": "/Lion-Primer/static/css/main.68ba72a5.chunk.css.map",
-    "static/js/2.9db468ff.chunk.js.LICENSE.txt": "/Lion-Primer/static/js/2.9db468ff.chunk.js.LICENSE.txt",
+    "static/js/2.5a4a1b97.chunk.js.LICENSE.txt": "/Lion-Primer/static/js/2.5a4a1b97.chunk.js.LICENSE.txt",
     "static/media/arrow-right.5051f98a.svg": "/Lion-Primer/static/media/arrow-right.5051f98a.svg",
     "static/media/cancel.f4921acd.svg": "/Lion-Primer/static/media/cancel.f4921acd.svg",
     "static/media/drop.0576442a.svg": "/Lion-Primer/static/media/drop.0576442a.svg",
@@ -19,8 +19,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.e8ce6ac9.js",
-    "static/js/2.9db468ff.chunk.js",
+    "static/js/2.5a4a1b97.chunk.js",
     "static/css/main.68ba72a5.chunk.css",
-    "static/js/main.da2129f6.chunk.js"
+    "static/js/main.9f802d83.chunk.js"
   ]
 }
