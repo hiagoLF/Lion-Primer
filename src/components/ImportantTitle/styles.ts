@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const ImportantTitleContainer = styled.div`
+type ImportantTitleContainerProps = {
+   width?: number;
+};
+
+export const ImportantTitleContainer = styled.div<ImportantTitleContainerProps>`
    display: flex;
    flex-direction: column;
    color: #112d4e;
@@ -9,5 +13,5 @@ export const ImportantTitleContainer = styled.div`
    border-bottom-color: #112d4e;
    padding-bottom: 10px;
    font-size: 11px;
-   width: 753px;
+   width: ${({ width }) => (width ? width : 753)}px;
 `;

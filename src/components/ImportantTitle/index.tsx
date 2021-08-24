@@ -2,8 +2,16 @@ import React from "react";
 
 import { ImportantTitleContainer } from "./styles";
 
-const ImportantTitle: React.FC = ({ children }) => {
-   return <ImportantTitleContainer>{children}</ImportantTitleContainer>;
+type ImportantTitleProps = {
+   width?: number;
+};
+
+const ImportantTitle: React.FC<ImportantTitleProps> = ({ children, width }) => {
+   return (
+      <ImportantTitleContainer width={width}>
+         {children}
+      </ImportantTitleContainer>
+   );
 };
 
 export default ImportantTitle;

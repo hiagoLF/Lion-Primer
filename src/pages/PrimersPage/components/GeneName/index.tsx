@@ -5,7 +5,7 @@ import ImportantTitle from "../../../../components/ImportantTitle";
 
 const GeneName: React.FC = () => {
    return (
-      <ImportantTitle>
+      <ImportantTitle width={920}>
          <h1>Myosin HY948 - b portion</h1>
       </ImportantTitle>
    );
