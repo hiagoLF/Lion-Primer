@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import predictPrimersFromFastaGene from "../../services/predictPrimers";
 import FileReceiver from "./components/FileReceiver";
 import HomeHeader from "./components/HomeHeader";
 import SubmitPrimersButton from "./components/SubmitPrimersButton";
@@ -23,39 +24,8 @@ const HomePage: React.FC = () => {
    };
 
    const submitText = () => {
-      console.log(textToSubmit);
-      console.log(
-         history.push("/primers", {
-            mainSequence: "AACGTGACTAGCTAGCCAHCTAHCTAACTHCTHATCHATCHATCHTC",
-            geneName: "Myosin portion 3",
-            primers: {
-               forwardPrimers: [
-                  {
-                     primerSequence: "CACTAGCTAGCTAGCTAGCTACTA",
-                     inicitalPosition: 10,
-                     finalPosition: 15,
-                  },
-                  {
-                     primerSequence: "CACTAGCTAGCTAGCTAGCTACTA",
-                     inicitalPosition: 60,
-                     finalPosition: 90,
-                  },
-               ],
-               reversePrimers: [
-                  {
-                     primerSequence: "CACTAGCTAGCTAGCTAGCTACTA",
-                     inicitalPosition: 1,
-                     finalPosition: 20,
-                  },
-                  {
-                     primerSequence: "CACTAGCTAGCTAGCTAGCTACTA",
-                     inicitalPosition: 15,
-                     finalPosition: 30,
-                  },
-               ],
-            },
-         })
-      );
+      const primersResult = predictPrimersFromFastaGene(textToSubmit);
+      console.log(primersResult);
    };
 
    const handleSubmitButtonClick = () => {
