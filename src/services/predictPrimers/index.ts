@@ -1,16 +1,13 @@
+import { Console } from "console";
+
 function predictPrimersFromFastaGene(fataGene: string) {
    const geneName = getGeneNameFromFasta(fataGene);
    const geneSequence = getGeneSequenceFromFasta(fataGene);
-   const geneComplementarSequence =
-      getDnaComplementarSequenceFrom(geneSequence);
-   const reversePrimers = getFragmentsFrom(geneSequence);
-   const fowardPrimers = getFragmentsFrom(geneComplementarSequence);
+   const primers = getFragmentsFrom(geneSequence);
    return {
       geneName,
       geneSequence,
-      geneComplementarSequence,
-      fowardPrimers,
-      reversePrimers,
+      primers,
    };
 }
 
@@ -95,6 +92,7 @@ function getFragmentInformations(
    const fragment = geneSequenceArray.slice(initialBaseIndex, finalIndex);
    const cgContentAtFiveLastNucleotides =
       getCGcontentAtFiveLastNucleotides(fragment);
+   const subsequentDinucleotidesAmount = getSubsequentDinucleotidesAmount(fragment)
 
    const fragmentInformations = {
       sequence: fragment.join(""),
@@ -103,6 +101,7 @@ function getFragmentInformations(
          finalNucleotidePosition: finalIndex,
       },
       cgContentAtFiveLastNucleotides,
+      subsequentDinucleotidesAmount
    };
 
    return fragmentInformations;
@@ -123,6 +122,29 @@ function getCGcontentAtFiveLastNucleotides(fragment: string[]) {
       }
    }
    return cgAmount;
+}
+
+function getSubsequentDinucleotidesAmount(fragment: string[]) {
+   let subsequentDinucleotideAmount = 0
+   let dinucleotideIndex = 0
+   let foundNucleotide = false
+   
+   while(dinucleotideIndex < fragment.length-3){
+      const currentDinucleotide = [fragment[dinucleotideIndex], fragment[dinucleotideIndex + 1]].join('')
+      const nextDinucleotide = [fragment[dinucleotideIndex+2], fragment[dinucleotideIndex + 3]].join('')
+      if(currentDinucleotide === nextDinucleotide){
+         subsequentDinucleotideAmount++
+         dinucleotideIndex = dinucleotideIndex + 2
+         foundNucleotide = true
+      }else{
+         if(foundNucleotide){
+            foundNucleotide=false
+            subsequentDinucleotideAmount++
+         }
+         dinucleotideIndex++
+      }
+   }
+   return subsequentDinucleotideAmount
 }
 
 export default predictPrimersFromFastaGene;
