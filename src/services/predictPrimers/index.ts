@@ -94,6 +94,7 @@ function getFragmentInformations(
     getSubsequentDinucleotidesAmount(fragment);
   const subsequentRepeatedBases = getSubsequentRepeatedBases(fragment);
   const gcPercentage = getGcPercentage(fragment);
+  const meltingTemperature = getMeltingTemperature(fragment);
 
   const fragmentInformations = {
     sequence: fragment.join(""),
@@ -105,6 +106,7 @@ function getFragmentInformations(
     subsequentDinucleotidesAmount,
     subsequentRepeatedBases,
     gcPercentage,
+    meltingTemperature,
   };
 
   return fragmentInformations;
@@ -194,6 +196,17 @@ function getAmountNumberOfNitrogenBaseInFragment(
     }
   });
   return amountNumberOfNitrogenBase;
+}
+
+function getMeltingTemperature(fragment: string[]) {
+  const cContentNumber = getAmountNumberOfNitrogenBaseInFragment("C", fragment);
+  const gContentNumber = getAmountNumberOfNitrogenBaseInFragment("G", fragment);
+  const aContentNumber = getAmountNumberOfNitrogenBaseInFragment("A", fragment);
+  const tContentNumber = getAmountNumberOfNitrogenBaseInFragment("T", fragment);
+  const meltingTemperature =
+    4 * (gContentNumber + cContentNumber) +
+    2 * (aContentNumber + tContentNumber);
+  return meltingTemperature;
 }
 
 export default predictPrimersFromFastaGene;
