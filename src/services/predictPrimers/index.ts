@@ -93,6 +93,7 @@ function getFragmentInformations(
   const subsequentDinucleotidesAmount =
     getSubsequentDinucleotidesAmount(fragment);
   const subsequentRepeatedBases = getSubsequentRepeatedBases(fragment);
+  const gcPercentage = getGcPercentage(fragment);
 
   const fragmentInformations = {
     sequence: fragment.join(""),
@@ -103,6 +104,7 @@ function getFragmentInformations(
     cgContentAtFiveLastNucleotides,
     subsequentDinucleotidesAmount,
     subsequentRepeatedBases,
+    gcPercentage,
   };
 
   return fragmentInformations;
@@ -161,16 +163,37 @@ function getSubsequentRepeatedBases(fragment: string[]) {
   fragment.forEach((currentBase, currentBaseIndex) => {
     if (currentBase === fragment[currentBaseIndex + 1]) {
       subsequentRepeatedBases++;
-      subsequentRepeatedBaseFound = true
+      subsequentRepeatedBaseFound = true;
     } else {
       if (subsequentRepeatedBaseFound) {
         subsequentRepeatedBases++;
-        subsequentRepeatedBaseFound = false
+        subsequentRepeatedBaseFound = false;
       }
     }
   });
 
   return subsequentRepeatedBases;
+}
+
+function getGcPercentage(fragment: string[]) {
+  const gAmountNumber = getAmountNumberOfNitrogenBaseInFragment("G", fragment);
+  const cAmountNumber = getAmountNumberOfNitrogenBaseInFragment("C", fragment);
+  const gcAmountNumber = gAmountNumber + cAmountNumber;
+  const gcPercentage = (gcAmountNumber / fragment.length) * 100;
+  return gcPercentage;
+}
+
+function getAmountNumberOfNitrogenBaseInFragment(
+  nitrogenBase: string,
+  fragment: string[]
+) {
+  let amountNumberOfNitrogenBase = 0;
+  fragment.forEach((fragmentNitrogenBase) => {
+    if (fragmentNitrogenBase === nitrogenBase) {
+      amountNumberOfNitrogenBase++;
+    }
+  });
+  return amountNumberOfNitrogenBase;
 }
 
 export default predictPrimersFromFastaGene;
