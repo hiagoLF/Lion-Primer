@@ -1,7 +1,10 @@
+import { PrimersType } from "../../types/primers";
+
 function predictPrimersFromFastaGene(fataGene: string) {
   const geneName = getGeneNameFromFasta(fataGene);
   const geneSequence = getGeneSequenceFromFasta(fataGene);
-  const primers = getFragmentsFrom(geneSequence);
+  const primersNotFiltered = getFragmentsFrom(geneSequence);
+  const primers = getTheBestPrimers(primersNotFiltered);
   return {
     geneName,
     geneSequence,
@@ -207,6 +210,28 @@ function getMeltingTemperature(fragment: string[]) {
     4 * (gContentNumber + cContentNumber) +
     2 * (aContentNumber + tContentNumber);
   return meltingTemperature;
+}
+
+function getTheBestPrimers(primersToFilter: PrimersType[]) {
+  let betterPrimers = primersToFilter.filter((primer) => {
+    if (primer.cgContentAtFiveLastNucleotides >= 3) {
+      return false;
+    }
+    if (primer.subsequentDinucleotidesAmount >= 4) {
+      return false;
+    }
+    if (primer.subsequentRepeatedBases >= 4) {
+      return false;
+    }
+    if (!(primer.gcPercentage > 40 || primer.cgContentAtFiveLastNucleotides < 60)) {
+      return false;
+    }
+    if (!(primer.meltingTemperature > 52 || primer.meltingTemperature < 58)) {
+      return false;
+    }
+    return true;
+  });
+  return betterPrimers;
 }
 
 export default predictPrimersFromFastaGene;
