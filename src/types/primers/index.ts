@@ -23,3 +23,9 @@ export type PrimersContexProps = {
   predictedPrimers: PredictedPrimersType | undefined;
   setPredictedPrimers: (predictedPrimers: PredictedPrimersType) => void;
 };
+
+export type PrimersLocationsProps = {
+  geneSequence: String;
+  fowardPrimerPositions: PrimersPositionsType;
+  reversePrimerPositions: PrimersPositionsType;
+};
