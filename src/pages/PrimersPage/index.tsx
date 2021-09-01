@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import {
+  PrimersProvider,
+  usePredictedPrimers,
+} from "../../contexts/PrimersContext";
 import BottomButtons from "./components/BottomButtons";
 import GeneName from "./components/GeneName";
 import PrimersAndPositions from "./components/PrimersAndPositions";
@@ -8,15 +12,16 @@ import { PrimersPageContainer } from "./styles";
 
 const PrimersPage: React.FC = () => {
   const location = useLocation();
-  const [geneAndPrimers, setGeneAndPrimers] = useState(undefined)
+  const { setPredictedPrimers } = usePredictedPrimers();
 
   useEffect(() => {
     const searchParam = new URLSearchParams(location.search);
-    const primers = searchParam.get("primers") || '';
-    setGeneAndPrimers(JSON.parse(primers))
-  }, [location]);
-
-  console.log(geneAndPrimers)
+    const primersStringified = searchParam.get("primers") || "";
+    const primers = primersStringified
+      ? JSON.parse(primersStringified)
+      : undefined;
+    setPredictedPrimers(primers);
+  }, [location, setPredictedPrimers]);
 
   return (
     <PrimersPageContainer>
@@ -27,4 +32,12 @@ const PrimersPage: React.FC = () => {
   );
 };
 
-export default PrimersPage;
+const PrimersPageWithContext: React.FC = () => {
+  return (
+    <PrimersProvider>
+      <PrimersPage />
+    </PrimersProvider>
+  );
+};
+
+export default PrimersPageWithContext;
