@@ -4,7 +4,8 @@ function predictPrimersFromFastaGene(fataGene: string) {
   const geneName = getGeneNameFromFasta(fataGene);
   const geneSequence = getGeneSequenceFromFasta(fataGene);
   const primersNotFiltered = getFragmentsFrom(geneSequence);
-  const primers = getTheBestPrimers(primersNotFiltered);
+  const theBestPrimers = getTheBestPrimers(primersNotFiltered);
+  const primers = removeRepeatedPrimers(theBestPrimers);
   return {
     geneName,
     geneSequence,
@@ -223,7 +224,9 @@ function getTheBestPrimers(primersToFilter: PrimersType[]) {
     if (primer.subsequentRepeatedBases >= 4) {
       return false;
     }
-    if (!(primer.gcPercentage > 40 || primer.cgContentAtFiveLastNucleotides < 60)) {
+    if (
+      !(primer.gcPercentage > 40 || primer.cgContentAtFiveLastNucleotides < 60)
+    ) {
       return false;
     }
     if (!(primer.meltingTemperature > 52 || primer.meltingTemperature < 58)) {
@@ -232,6 +235,20 @@ function getTheBestPrimers(primersToFilter: PrimersType[]) {
     return true;
   });
   return betterPrimers;
+}
+
+export function removeRepeatedPrimers(theBestPrimers: PrimersType[]) {
+  const uniquePrimers = theBestPrimers.filter((primer, index, primersList) => {
+    let isUnique = true
+    primersList.forEach((primerToCompare, primerToCompareIndex) => {
+      if(primerToCompareIndex !== index && primerToCompare.sequence === primer.sequence){
+        isUnique = false
+      }
+    })
+    return isUnique
+  });
+
+  return uniquePrimers;
 }
 
 export default predictPrimersFromFastaGene;
