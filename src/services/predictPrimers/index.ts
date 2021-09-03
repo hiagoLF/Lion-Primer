@@ -14,10 +14,12 @@ function predictPrimersFromFastaGene(fataGene: string) {
     geneSequence
   );
 
+  console.log(primers)
+
   return {
     geneName,
     geneSequence,
-    primers,
+    primers: primers,
   };
 }
 
@@ -269,9 +271,11 @@ export const removePrimersWithMoreThanOneDnaTarget: RemovePrimersWithMoreThanOne
         sequence,
         geneSequence
       );
+
       if (primerRepeatsNumber > 1) {
         return false;
       }
+
 
       const backToFrontPrimerSequence = turnTextStringBackToFront(sequence);
       const backToFrontPrimerRepeatsNumber =
@@ -283,7 +287,7 @@ export const removePrimersWithMoreThanOneDnaTarget: RemovePrimersWithMoreThanOne
         return false;
       }
 
-      if (primerRepeatsNumber > 0 || backToFrontPrimerRepeatsNumber > 0) {
+      if (primerRepeatsNumber > 0 && backToFrontPrimerRepeatsNumber > 0) {
         return false;
       }
 
@@ -293,13 +297,13 @@ export const removePrimersWithMoreThanOneDnaTarget: RemovePrimersWithMoreThanOne
     return singleTargetPrimers;
   };
 
-function getOccurrencesNumberOfElementInText(element: string, text: string) {
+export function getOccurrencesNumberOfElementInText(element: string, text: string) {
   const elementRegexString = new RegExp(element, "g");
   const elementOccurrencesNumber = text.match(elementRegexString)?.length || 0;
   return elementOccurrencesNumber;
 }
 
-function turnTextStringBackToFront(textString: string) {
+export function turnTextStringBackToFront(textString: string) {
   const backToFrontTextString = textString.split("").reverse().join("");
   return backToFrontTextString;
 }
