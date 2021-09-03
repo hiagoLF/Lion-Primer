@@ -1,11 +1,19 @@
-import { PrimersType } from "../../types/primers";
+import {
+  PrimersType,
+  RemovePrimersWithMoreThanOneDnaTargetType,
+} from "../../types/primers";
 
 function predictPrimersFromFastaGene(fataGene: string) {
   const geneName = getGeneNameFromFasta(fataGene);
   const geneSequence = getGeneSequenceFromFasta(fataGene);
   const primersNotFiltered = getFragmentsFrom(geneSequence);
   const theBestPrimers = getTheBestPrimers(primersNotFiltered);
-  const primers = removeRepeatedPrimers(theBestPrimers);
+  const uniquePrimers = removeRepeatedPrimers(theBestPrimers);
+  const primers = removePrimersWithMoreThanOneDnaTarget(
+    uniquePrimers,
+    geneSequence
+  );
+
   return {
     geneName,
     geneSequence,
@@ -239,16 +247,61 @@ function getTheBestPrimers(primersToFilter: PrimersType[]) {
 
 export function removeRepeatedPrimers(theBestPrimers: PrimersType[]) {
   const uniquePrimers = theBestPrimers.filter((primer, index, primersList) => {
-    let isUnique = true
+    let isUnique = true;
     primersList.forEach((primerToCompare, primerToCompareIndex) => {
-      if(primerToCompareIndex !== index && primerToCompare.sequence === primer.sequence){
-        isUnique = false
+      if (
+        primerToCompareIndex !== index &&
+        primerToCompare.sequence === primer.sequence
+      ) {
+        isUnique = false;
       }
-    })
-    return isUnique
+    });
+    return isUnique;
   });
 
   return uniquePrimers;
+}
+
+export const removePrimersWithMoreThanOneDnaTarget: RemovePrimersWithMoreThanOneDnaTargetType =
+  (primers, geneSequence) => {
+    const singleTargetPrimers = primers.filter(({ sequence }) => {
+      const primerRepeatsNumber = getOccurrencesNumberOfElementInText(
+        sequence,
+        geneSequence
+      );
+      if (primerRepeatsNumber > 1) {
+        return false;
+      }
+
+      const backToFrontPrimerSequence = turnTextStringBackToFront(sequence);
+      const backToFrontPrimerRepeatsNumber =
+        getOccurrencesNumberOfElementInText(
+          backToFrontPrimerSequence,
+          geneSequence
+        );
+      if (backToFrontPrimerRepeatsNumber > 1) {
+        return false;
+      }
+
+      if (primerRepeatsNumber > 0 || backToFrontPrimerRepeatsNumber > 0) {
+        return false;
+      }
+
+      return true;
+    });
+
+    return singleTargetPrimers;
+  };
+
+function getOccurrencesNumberOfElementInText(element: string, text: string) {
+  const elementRegexString = new RegExp(element, "g");
+  const elementOccurrencesNumber = text.match(elementRegexString)?.length || 0;
+  return elementOccurrencesNumber;
+}
+
+function turnTextStringBackToFront(textString: string) {
+  const backToFrontTextString = textString.split("").reverse().join("");
+  return backToFrontTextString;
 }
 
 export default predictPrimersFromFastaGene;

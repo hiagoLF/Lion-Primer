@@ -29,3 +29,8 @@ export type PrimersLocationsProps = {
   fowardPrimerPositions: PrimersPositionsType;
   reversePrimerPositions: PrimersPositionsType;
 };
+
+export type RemovePrimersWithMoreThanOneDnaTargetType = (
+  primers: PrimersType[],
+  geneSequence: string
+) => PrimersType[];

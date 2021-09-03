@@ -1,4 +1,7 @@
-import { removeRepeatedPrimers } from "../../services/predictPrimers";
+import {
+  removePrimersWithMoreThanOneDnaTarget,
+  removeRepeatedPrimers,
+} from "../../services/predictPrimers";
 
 const primers = [
   {
@@ -37,11 +40,40 @@ const primers = [
     subsequentDinucleotidesAmount: 0,
     subsequentRepeatedBases: 0,
   },
+  {
+    cgContentAtFiveLastNucleotides: 0,
+    gcPercentage: 0,
+    meltingTemperature: 0,
+    positions: { finalNucleotidePosition: 0, initialNucleotidePosition: 0 },
+    sequence: "TAGGGCGAT",
+    subsequentDinucleotidesAmount: 0,
+    subsequentRepeatedBases: 0,
+  },
+  {
+    cgContentAtFiveLastNucleotides: 0,
+    gcPercentage: 0,
+    meltingTemperature: 0,
+    positions: { finalNucleotidePosition: 0, initialNucleotidePosition: 0 },
+    sequence: "AGCGGCGGAGC",
+    subsequentDinucleotidesAmount: 0,
+    subsequentRepeatedBases: 0,
+  },
 ];
 
-test("Should Remove repeated primers", () => {
-  const uniquePrimers = removeRepeatedPrimers(primers);
-  expect(uniquePrimers.length).toBe(2) 
+const geneSequence = "TGCATCTAGGGCGATTTTTAGCGGCGGAGCTATGCGGATGCTTAGGGCGATATTCGTAGCGGAGCGATGCGTCGATCCGAGGCGGCGAGATCGA";
+
+describe("Functions to filter primers", () => {
+  it("Should Remove repeated primers", () => {
+    const uniquePrimers = removeRepeatedPrimers(primers);
+    expect(uniquePrimers.length).toBe(4);
+  });
+
+  it("Should remove primers with more than one dna target", () => {
+    const primersResult = removePrimersWithMoreThanOneDnaTarget(primers, geneSequence);
+    expect(primersResult.length).toBe(4)
+
+
+  });
 });
 
 export {};
