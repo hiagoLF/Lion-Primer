@@ -4,7 +4,7 @@ import { PrimersType } from "../../../../types/primers";
 import { SinglePrimersDescriptionBoxContainer } from "./styles";
 
 type SinglePrimersDescriptionBoxProps = {
-  primersDescription: PrimersType;
+  primersDescription?: PrimersType;
   primerSense: "foward" | "reverse";
 };
 
@@ -18,7 +18,7 @@ const SinglePrimersDescriptionBox: React.FC<SinglePrimersDescriptionBoxProps> =
           </span>
           <div id="sequence">
             <span className="low-opacity">5'</span>
-            <span>AGCTGACGATCGATCTAGCTAGC</span>
+            <span>{primersDescription?.sequence}</span>
             <span className="low-opacity"> 3'</span>
           </div>
         </div>
@@ -27,24 +27,27 @@ const SinglePrimersDescriptionBox: React.FC<SinglePrimersDescriptionBoxProps> =
           <div className="description-column-container">
             <div className="single-desciption">
               <span className="low-opacity">Temperatura de Melting</span>
-              <span>Tm: 53°C</span>
+              <span>Tm: {primersDescription?.meltingTemperature}°C</span>
             </div>
             <div className="single-desciption">
               <span className="low-opacity">
                 Bases Repetidas em Subsequência
               </span>
-              <span>BR: 7nt</span>
+              <span>BR: {primersDescription?.subsequentRepeatedBases}nt</span>
             </div>
           </div>
 
           <div className="description-column-container">
             <div className="single-desciption">
               <span className="low-opacity">Posição</span>
-              <span>50 - 69</span>
+              <span>
+                {primersDescription?.positions.initialNucleotidePosition} -{" "}
+                {primersDescription?.positions.finalNucleotidePosition}
+              </span>
             </div>
             <div className="single-desciption">
               <span className="low-opacity">Porcentagem de GC</span>
-              <span>G + C = 52%</span>
+              <span>G + C = {Math.round(primersDescription?.gcPercentage || 0)}%</span>
             </div>
           </div>
         </div>

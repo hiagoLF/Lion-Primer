@@ -47,15 +47,15 @@ const PrimersLocations: React.FC<PrimersLocationsProps> = ({
   const sequenceAndLocationsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const geneSequenceToArray = geneSequence.split("");
+    const geneSequenceToArray = geneSequence?.split("");
     setGeneSequenceArray(geneSequenceToArray);
   }, [geneSequence]);
 
   useEffect(() => {
-    const fragmentsSize =
-      reversePrimerPositions.finalNucleotidePosition -
-      fowardPrimerPositions.initialNucleotidePosition +
-      1;
+    const lastPosition = reversePrimerPositions?.finalNucleotidePosition || 0;
+    const initialPosition = fowardPrimerPositions?.finalNucleotidePosition || 0;
+
+    const fragmentsSize = lastPosition - initialPosition + 1;
     setAmplifiedFragmentsSize(fragmentsSize);
   }, [fowardPrimerPositions, reversePrimerPositions]);
 
@@ -80,8 +80,14 @@ const PrimersLocations: React.FC<PrimersLocationsProps> = ({
           <span
             className={defineNucleotideColorHighlight(
               nucleotideIndex,
-              fowardPrimerPositions,
-              reversePrimerPositions
+              fowardPrimerPositions || {
+                finalNucleotidePosition: 0,
+                initialNucleotidePosition: 0,
+              },
+              reversePrimerPositions || {
+                finalNucleotidePosition: 0,
+                initialNucleotidePosition: 0,
+              }
             )}
           >
             {nucleotide}

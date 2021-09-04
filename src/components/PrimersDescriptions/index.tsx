@@ -1,4 +1,5 @@
 import React from "react";
+import { usePredictedPrimers } from "../../contexts/PrimersContext";
 import { PrimersPositionsType, PrimersType } from "../../types/primers";
 import PrimersLocations from "./components/PrimerLocations";
 import SinglePrimersDescriptionBox from "./components/SinglePrimersDescriptionBox";
@@ -32,22 +33,30 @@ const reversePrimerPositions: PrimersPositionsType = {
 };
 
 const PrimersDescriptions: React.FC = () => {
+  const { predictedPrimers, primerChoosed } = usePredictedPrimers();
+
   return (
     <PrimersDescriptionsContainer>
       <SinglePrimersDescriptionBox
         primerSense={"foward"}
-        primersDescription={primersDescription}
+        primersDescription={predictedPrimers?.primers[primerChoosed]}
       />
 
       <SinglePrimersDescriptionBox
         primerSense={"reverse"}
-        primersDescription={primersDescription}
+        primersDescription={
+          predictedPrimers?.primers[primerChoosed].reversePrimer
+        }
       />
 
       <PrimersLocations
-        geneSequence={geneSequence}
-        fowardPrimerPositions={fowardPrimerPositions}
-        reversePrimerPositions={reversePrimerPositions}
+        geneSequence={predictedPrimers?.geneSequence}
+        fowardPrimerPositions={
+          predictedPrimers?.primers[primerChoosed].positions
+        }
+        reversePrimerPositions={
+          predictedPrimers?.primers[primerChoosed].reversePrimer?.positions
+        }
       />
     </PrimersDescriptionsContainer>
   );

@@ -23,12 +23,14 @@ export type PredictedPrimersType = {
 export type PrimersContexProps = {
   predictedPrimers: PredictedPrimersType | undefined;
   setPredictedPrimers: (predictedPrimers: PredictedPrimersType) => void;
+  primerChoosed: number,
+  setPrimerChoosed: (primerIndex: number) => void;
 };
 
 export type PrimersLocationsProps = {
-  geneSequence: String;
-  fowardPrimerPositions: PrimersPositionsType;
-  reversePrimerPositions: PrimersPositionsType;
+  geneSequence?: String;
+  fowardPrimerPositions?: PrimersPositionsType;
+  reversePrimerPositions?: PrimersPositionsType;
 };
 
 export type RemovePrimersWithMoreThanOneDnaTargetType = (
