@@ -16,11 +16,10 @@ const HomePage: React.FC = () => {
   const submitFile = () => {
     const fileReader = new FileReader();
     fileReader.onload = (event) => {
-      console.log(event.target?.result);
+      const primersResult = predictPrimersFromFastaGene(event.target?.result as string);
+      history.push(`/primers?primers=${JSON.stringify(primersResult)}`);
     };
     fileToSubmit && fileReader.readAsText(fileToSubmit);
-    const primersResult = predictPrimersFromFastaGene(textToSubmit);
-    history.push(`/primers?primers=${JSON.stringify(primersResult)}`);
   };
 
   const submitText = () => {

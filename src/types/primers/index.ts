@@ -6,6 +6,7 @@ export type PrimersType = {
   sequence: string;
   subsequentDinucleotidesAmount: number;
   subsequentRepeatedBases: number;
+  reversePrimer?: PrimersType;
 };
 
 export type PrimersPositionsType = {

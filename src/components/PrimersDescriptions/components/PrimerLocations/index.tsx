@@ -60,7 +60,6 @@ const PrimersLocations: React.FC<PrimersLocationsProps> = ({
   }, [fowardPrimerPositions, reversePrimerPositions]);
 
   const handleSequenceAndLocationsBoxWheel: WheelEventHandler = (event) => {
-    event.preventDefault();
     if (!sequenceAndLocationsRef.current) return;
     sequenceAndLocationsRef.current.scrollLeft += event.deltaY;
   };
