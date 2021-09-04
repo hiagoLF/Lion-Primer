@@ -1,37 +1,71 @@
 import { PrimersType } from "../../../types/primers";
 
 export function getTheBestReversePrimer(
-  primer: PrimersType,
-  primerList: PrimersType[],
+  primerWithoutReverse: PrimersType,
+  primerToCompareList: PrimersType[],
   geneLengh: number
-) {
-  let theBestPrimer: PrimersType | null = null;
-  const minimumDistanceBettweenPrimers = Math.round(geneLengh / 4);
+): PrimersType | undefined {
+  let theBestPrimer: PrimersType = primerToCompareList[0];
+  let reversePrimerChoosed = false;
+  const minimumDistanceBettweenPrimers = geneLengh / 4;
 
-  primerList.forEach((primerToCompare) => {
+  primerToCompareList.forEach((primerToCompare) => {
     if (
-      minimumDistanceBettweenPrimers <
-      Math.round(
-        primerToCompare.positions.initialNucleotidePosition -
-          primer.positions.initialNucleotidePosition
+      havePrimersTheMinimumDistance(
+        minimumDistanceBettweenPrimers,
+        primerWithoutReverse,
+        primerToCompare
       )
     ) {
-      if (theBestPrimer) {
-        if (
-          Math.round(
-            theBestPrimer.meltingTemperature - primer.meltingTemperature
-          ) >
-          Math.round(
-            primerToCompare.meltingTemperature - primer.meltingTemperature
-          )
-        ) {
-          theBestPrimer = primerToCompare;
-        }
-      } else {
+      if (
+        diferenceBettwenPrimersMeltingTemperatures(
+          theBestPrimer,
+          primerWithoutReverse
+        ) >
+        diferenceBettwenPrimersMeltingTemperatures(
+          primerToCompare,
+          primerWithoutReverse
+        )
+      ) {
         theBestPrimer = primerToCompare;
+        reversePrimerChoosed = true;
       }
     }
   });
 
+  if (!reversePrimerChoosed) {
+    return undefined;
+  }
   return theBestPrimer;
+}
+
+function diferenceBettwenPrimersMeltingTemperatures(
+  primerOne: PrimersType,
+  primerTwo: PrimersType
+) {
+  let dif = 0
+
+  if(primerOne > primerTwo){
+    dif = primerOne.meltingTemperature - primerTwo.meltingTemperature
+  }else{
+    dif = primerTwo.meltingTemperature - primerOne.meltingTemperature
+  }
+
+  return dif;
+}
+
+function havePrimersTheMinimumDistance(
+  minimumDistanceBettweenPrimers: number,
+  primerOne: PrimersType,
+  primerTwo: PrimersType
+) {
+  if (
+    minimumDistanceBettweenPrimers <
+    primerTwo.positions.initialNucleotidePosition -
+      primerOne.positions.initialNucleotidePosition
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }

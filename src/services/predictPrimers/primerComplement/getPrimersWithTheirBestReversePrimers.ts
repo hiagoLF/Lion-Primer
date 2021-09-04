@@ -5,25 +5,33 @@ export function getPrimersWithTheirBestReversePrimers(
   primers: PrimersType[],
   geneLengh: number
 ) {
-  const primersMatched = primers.map((primer, primerIndex, primerList) => {
-    const matchedPrimer = getTheBestReversePrimer(
-      primer,
-      primerList,
-      geneLengh
-    );
+  const primersWithReversePrimers = primers.map(
+    (
+      primerWithoutReverse,
+      primerWithoutReverseIndex,
+      primerWithoutReverseList
+    ) => {
+      const matchedPrimer = getTheBestReversePrimer(
+        primerWithoutReverse,
+        primerWithoutReverseList,
+        geneLengh
+      );
 
-    if (!matchedPrimer) {
-      return undefined;
+      // O problema é acima
+
+      if (!matchedPrimer) {
+        return undefined;
+      }
+
+      const primerWithReverseSequence = { ...primerWithoutReverse };
+      primerWithReverseSequence.reversePrimer = matchedPrimer;
+
+      return primerWithReverseSequence;
     }
-
-    const primerWithReverseSequence = primer;
-    primerWithReverseSequence.reversePrimer = matchedPrimer;
-
-    return primerWithReverseSequence;
-  });
+  );
 
   const primersMatchedCleaned: PrimersType[] = [];
-  primersMatched.forEach((primer, index) => {
+  primersWithReversePrimers.forEach((primer) => {
     if (primer) {
       primersMatchedCleaned.push(primer);
     }

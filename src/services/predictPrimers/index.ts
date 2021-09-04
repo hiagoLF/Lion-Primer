@@ -4,7 +4,7 @@ import { removeRepeatedPrimers } from "./filter/removeRepeatedPrimers";
 import { getGeneNameFromFasta } from "./format/getGeneNameFromFasta";
 import { getGeneSequenceFromFasta } from "./format/getGeneSequenceFromFasta";
 import { getFragmentsFrom } from "./fragments";
-// import { getPrimersWithTheirBestReversePrimers } from "./primerComplement/getPrimersWithTheirBestReversePrimers";
+import { getPrimersWithTheirBestReversePrimers } from "./primerComplement/getPrimersWithTheirBestReversePrimers";
 
 function predictPrimersFromFastaGene(fataGene: string) {
   const geneName = getGeneNameFromFasta(fataGene);
@@ -16,15 +16,17 @@ function predictPrimersFromFastaGene(fataGene: string) {
     uniquePrimers,
     geneSequence
   );
-  // const primers = getPrimersWithTheirBestReversePrimers(
-  //   primersWithOneTarget,
-  //   geneSequence.length
-  // );
+  const primers = getPrimersWithTheirBestReversePrimers(
+    primersWithOneTarget,
+    geneSequence.length
+  );
+
+  console.log(primers)
 
   return {
     geneName,
     geneSequence,
-    primers: primersWithOneTarget,
+    primers,
   };
 }
 
