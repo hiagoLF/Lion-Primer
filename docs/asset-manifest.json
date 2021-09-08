@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/Lion-Primer/static/css/main.68ba72a5.chunk.css",
-    "main.js": "/Lion-Primer/static/js/main.9f802d83.chunk.js",
-    "main.js.map": "/Lion-Primer/static/js/main.9f802d83.chunk.js.map",
-    "runtime-main.js": "/Lion-Primer/static/js/runtime-main.e8ce6ac9.js",
-    "runtime-main.js.map": "/Lion-Primer/static/js/runtime-main.e8ce6ac9.js.map",
-    "static/js/2.5a4a1b97.chunk.js": "/Lion-Primer/static/js/2.5a4a1b97.chunk.js",
-    "static/js/2.5a4a1b97.chunk.js.map": "/Lion-Primer/static/js/2.5a4a1b97.chunk.js.map",
-    "static/js/3.c9cbcc6f.chunk.js": "/Lion-Primer/static/js/3.c9cbcc6f.chunk.js",
-    "static/js/3.c9cbcc6f.chunk.js.map": "/Lion-Primer/static/js/3.c9cbcc6f.chunk.js.map",
+    "main.css": "/Lion-Primer/static/css/main.ed8ec656.chunk.css",
+    "main.js": "/Lion-Primer/static/js/main.b1b5f06e.chunk.js",
+    "main.js.map": "/Lion-Primer/static/js/main.b1b5f06e.chunk.js.map",
+    "runtime-main.js": "/Lion-Primer/static/js/runtime-main.bc96213e.js",
+    "runtime-main.js.map": "/Lion-Primer/static/js/runtime-main.bc96213e.js.map",
+    "static/js/2.2397e6b1.chunk.js": "/Lion-Primer/static/js/2.2397e6b1.chunk.js",
+    "static/js/2.2397e6b1.chunk.js.map": "/Lion-Primer/static/js/2.2397e6b1.chunk.js.map",
+    "static/js/3.8d619bcb.chunk.js": "/Lion-Primer/static/js/3.8d619bcb.chunk.js",
+    "static/js/3.8d619bcb.chunk.js.map": "/Lion-Primer/static/js/3.8d619bcb.chunk.js.map",
     "index.html": "/Lion-Primer/index.html",
-    "static/css/main.68ba72a5.chunk.css.map": "/Lion-Primer/static/css/main.68ba72a5.chunk.css.map",
-    "static/js/2.5a4a1b97.chunk.js.LICENSE.txt": "/Lion-Primer/static/js/2.5a4a1b97.chunk.js.LICENSE.txt",
+    "static/css/main.ed8ec656.chunk.css.map": "/Lion-Primer/static/css/main.ed8ec656.chunk.css.map",
+    "static/js/2.2397e6b1.chunk.js.LICENSE.txt": "/Lion-Primer/static/js/2.2397e6b1.chunk.js.LICENSE.txt",
     "static/media/arrow-right.5051f98a.svg": "/Lion-Primer/static/media/arrow-right.5051f98a.svg",
     "static/media/cancel.f4921acd.svg": "/Lion-Primer/static/media/cancel.f4921acd.svg",
     "static/media/drop.0576442a.svg": "/Lion-Primer/static/media/drop.0576442a.svg",
     "static/media/text.c860850f.svg": "/Lion-Primer/static/media/text.c860850f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e8ce6ac9.js",
-    "static/js/2.5a4a1b97.chunk.js",
-    "static/css/main.68ba72a5.chunk.css",
-    "static/js/main.9f802d83.chunk.js"
+    "static/js/runtime-main.bc96213e.js",
+    "static/js/2.2397e6b1.chunk.js",
+    "static/css/main.ed8ec656.chunk.css",
+    "static/js/main.b1b5f06e.chunk.js"
   ]
 }
