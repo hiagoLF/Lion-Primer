@@ -51,17 +51,6 @@ function diferenceBettwenPrimersMeltingTemperatures(
     dif = primerTwo.meltingTemperature - primerOne.meltingTemperature;
   }
 
-  console.log(
-    "primerOne >>> ",
-    primerOne.meltingTemperature,
-    " - ",
-    "primerTwo >>> ",
-    primerTwo.meltingTemperature,
-    " - ",
-    "Result >>>",
-    dif
-  );
-
   return dif;
 }
 

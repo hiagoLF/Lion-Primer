@@ -17,8 +17,6 @@ export function getPrimersWithTheirBestReversePrimers(
         geneLengh
       );
 
-      console.log('matchedPrimer >>> ', matchedPrimer)
-
       if (!matchedPrimer) {
         return undefined;
       }
