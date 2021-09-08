@@ -17,7 +17,7 @@ export function getPrimersWithTheirBestReversePrimers(
         geneLengh
       );
 
-      // O problema é acima
+      console.log('matchedPrimer >>> ', matchedPrimer)
 
       if (!matchedPrimer) {
         return undefined;

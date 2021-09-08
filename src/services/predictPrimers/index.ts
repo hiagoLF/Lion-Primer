@@ -16,12 +16,15 @@ function predictPrimersFromFastaGene(fataGene: string) {
     uniquePrimers,
     geneSequence
   );
+
+  console.log("primersWithOneTarget >>>> ", primersWithOneTarget);
+
   const primers = getPrimersWithTheirBestReversePrimers(
     primersWithOneTarget,
     geneSequence.length
   );
 
-  console.log(primers)
+  console.log("getPrimersWithTheirBestReversePrimers >>> ", primers);
 
   return {
     geneName,

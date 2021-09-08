@@ -1,5 +1,8 @@
 export function getGeneNameFromFasta(fataGene: string) {
-  const geneHeader = fataGene.split("\n")[0];
-  const geneName = geneHeader.replace(">", "").trim();
-  return geneName;
+  const geneTitle = fataGene.trim().split("\n")[0];
+  if(geneTitle.indexOf('>') === -1){
+    return 'Gene Desconhecido'
+  }
+  geneTitle.replace('>', '')
+  return geneTitle;
 }

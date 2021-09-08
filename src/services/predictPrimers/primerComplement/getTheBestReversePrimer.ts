@@ -43,13 +43,24 @@ function diferenceBettwenPrimersMeltingTemperatures(
   primerOne: PrimersType,
   primerTwo: PrimersType
 ) {
-  let dif = 0
+  let dif = 0;
 
-  if(primerOne > primerTwo){
-    dif = primerOne.meltingTemperature - primerTwo.meltingTemperature
-  }else{
-    dif = primerTwo.meltingTemperature - primerOne.meltingTemperature
+  if (primerOne.meltingTemperature > primerTwo.meltingTemperature) {
+    dif = primerOne.meltingTemperature - primerTwo.meltingTemperature;
+  } else {
+    dif = primerTwo.meltingTemperature - primerOne.meltingTemperature;
   }
+
+  console.log(
+    "primerOne >>> ",
+    primerOne.meltingTemperature,
+    " - ",
+    "primerTwo >>> ",
+    primerTwo.meltingTemperature,
+    " - ",
+    "Result >>>",
+    dif
+  );
 
   return dif;
 }
