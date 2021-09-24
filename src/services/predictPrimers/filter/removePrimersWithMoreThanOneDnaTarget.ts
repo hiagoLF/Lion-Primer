@@ -3,28 +3,25 @@ import { getOccurrencesNumberOfElementInText } from "../stringUtils/getOccurrenc
 import { turnTextStringBackToFront } from "../stringUtils/turnTextStringBackToFront";
 
 export const removePrimersWithMoreThanOneDnaTarget: RemovePrimersWithMoreThanOneDnaTargetType =
-  (primers, geneSequence) => {
+  (primers, geneSequence, complementaryGeneSequence) => {
     const singleTargetPrimers = primers.filter(({ sequence }) => {
-      const primerRepeatsNumber = getOccurrencesNumberOfElementInText(
+      const primerOccourrencesNumber = getOccurrencesNumberOfElementInText(
         sequence,
         geneSequence
       );
 
-      if (primerRepeatsNumber > 1) {
+      if (primerOccourrencesNumber > 1) {
         return false;
       }
 
       const backToFrontPrimerSequence = turnTextStringBackToFront(sequence);
-      const backToFrontPrimerRepeatsNumber =
+      const backToFrontPrimerOccourrencesInComplementaryGene =
         getOccurrencesNumberOfElementInText(
           backToFrontPrimerSequence,
-          geneSequence
+          complementaryGeneSequence
         );
-      if (backToFrontPrimerRepeatsNumber > 1) {
-        return false;
-      }
 
-      if (primerRepeatsNumber > 0 && backToFrontPrimerRepeatsNumber > 0) {
+      if (backToFrontPrimerOccourrencesInComplementaryGene > 0) {
         return false;
       }
 

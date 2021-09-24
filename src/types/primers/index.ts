@@ -23,7 +23,7 @@ export type PredictedPrimersType = {
 export type PrimersContexProps = {
   predictedPrimers: PredictedPrimersType | undefined;
   setPredictedPrimers: (predictedPrimers: PredictedPrimersType) => void;
-  primerChoosed: number,
+  primerChoosed: number;
   setPrimerChoosed: (primerIndex: number) => void;
 };
 
@@ -35,5 +35,6 @@ export type PrimersLocationsProps = {
 
 export type RemovePrimersWithMoreThanOneDnaTargetType = (
   primers: PrimersType[],
-  geneSequence: string
+  geneSequence: string,
+  complementaryGeneSequence: string
 ) => PrimersType[];

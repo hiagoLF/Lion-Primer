@@ -78,6 +78,7 @@ const PrimersLocations: React.FC<PrimersLocationsProps> = ({
       <div id="sequence-and-locations" ref={sequenceAndLocationsRef}>
         {geneSequenceArray?.map((nucleotide, nucleotideIndex) => (
           <span
+            key={nucleotideIndex}
             className={defineNucleotideColorHighlight(
               nucleotideIndex,
               fowardPrimerPositions || {
