@@ -1,4 +1,5 @@
 import { PrimersType } from "../../../types/primers";
+import { getMeltingTemperature } from "../fragments/getMeltingTemperature";
 
 type MatchPrimersProps = {
   fowardPrimers: PrimersType[];
@@ -10,33 +11,90 @@ type MatchPrimersFunction = (
   fowardPrimers: PrimersType[],
   reversePrimers: PrimersType[],
   geneLength: number
-) => string;
+) => PrimersType[];
 
 export const matchPrimers: MatchPrimersFunction = (
   fowardPrimers,
   reversePrimers,
   geneLength
 ) => {
+  const matchedPrimersAndUndefineds = fowardPrimers.map((fowardPrimer) => {
+    var bestReversePrimer: PrimersType | undefined = undefined;
 
-  // Percorre Foward Primers...
-    // Para o atual primer..
-    // instanciar constante do melhor primer reverso (MPR) (undefined inicialmente)
-    // Percorrer primers reversos
-      // Para o atual primer reverso...
-        // A distância entre foward e reverso atual é maior que 700? --> Pula Primer Reverso
-        // A distância entre foward e reverso atual é menor que 100? --> Pula Primer Reverso
-        // Ainda não existe MPR? --> MPR se torna reverso atual --> Pula Primer Reverso
-        // MPR está a mais de 500 de distância e reverso atual está abaixo disso?
-          // MPR se torna p reverso atual --> Pula Pimer Reverso
-        // MPR está a mais de 500 && reverso atual está acima de 500 && reverso atual está antes do MPR ?
-          // MPR se torna p reverso atual --> Pula Pimer Reverso
-        // MPR está a menos de 500 && reverso atual está a menos de 500 && reverso atual está depois do MPR ?
-          // MPR se torna p reverso atual --> Pula Pimer Reverso
-    // Depois que terminou de percorrer tudo...
-    // Caso não encontrou MPR, retorna undefined
-    // Se encontrou MPR
-    // Retornar primer atual preenchido com seu match sendo o MPR
+    for (let index = 0; index < reversePrimers.length; index++) {
+      const distanceBetweenFAndR = getDistanceBettween(
+        fowardPrimer,
+        reversePrimers[index]
+      );
+      if (!distanceBetweenFAndR) {
+        continue;
+      }
+      const isFAndRTheSameMeltingTemperature =
+        fowardPrimer.meltingTemperature ===
+        reversePrimers[index].meltingTemperature;
+      if (!isFAndRTheSameMeltingTemperature) {
+        continue;
+      }
+      if (distanceBetweenFAndR > 700) {
+        continue;
+      }
+      if (distanceBetweenFAndR < 450) {
+        continue;
+      }
+      if (!bestReversePrimer) {
+        bestReversePrimer = reversePrimers[index];
+        continue;
+      }
+      const distanceBetweenFAndBestR = getDistanceBettween(
+        fowardPrimer,
+        bestReversePrimer
+      ) as number;
+      if (distanceBetweenFAndBestR > 500 && distanceBetweenFAndR < 500) {
+        bestReversePrimer = reversePrimers[index];
+        continue;
+      }
+      const distanceBetweenRAndBestR = getDistanceBettween(
+        reversePrimers[index],
+        bestReversePrimer
+      );
+      if (
+        distanceBetweenFAndBestR > 500 &&
+        distanceBetweenFAndR > 500 &&
+        distanceBetweenRAndBestR
+      ) {
+        bestReversePrimer = reversePrimers[index];
+        continue;
+      }
+      if (
+        distanceBetweenFAndBestR < 500 &&
+        distanceBetweenFAndR < 500 &&
+        !distanceBetweenRAndBestR
+      ) {
+        bestReversePrimer = reversePrimers[index];
+        continue;
+      }
+    }
 
+    if (!bestReversePrimer) {
+      return undefined;
+    }
+    return {
+      ...fowardPrimer,
+      reversePrimer: bestReversePrimer,
+    };
+  });
 
-  return "Here we will combine primers";
+  const matchedPrimers = matchedPrimersAndUndefineds.filter((pp) => pp);
+
+  return matchedPrimers as PrimersType[];
 };
+
+function getDistanceBettween(first: PrimersType, second: PrimersType) {
+  const distance =
+    second.positions.finalNucleotidePosition -
+    first.positions.initialNucleotidePosition;
+  if (distance < 0) {
+    return undefined;
+  }
+  return distance;
+}

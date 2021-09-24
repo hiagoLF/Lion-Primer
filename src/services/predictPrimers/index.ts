@@ -4,7 +4,6 @@ import getDnaComplementarSequenceFrom from "./format/getDnaComplementarSequenceF
 import { getGeneNameFromFasta } from "./format/getGeneNameFromFasta";
 import { getGeneSequenceFromFasta } from "./format/getGeneSequenceFromFasta";
 import findPrimersOnSingleSequence from "./fragments/findPrimersOnSingleSequence";
-import { getPrimersWithTheirBestReversePrimers } from "./primerComplement/getPrimersWithTheirBestReversePrimers";
 import { matchPrimers } from "./primerComplement/matchPrimers";
 
 function predictPrimersFromFastaGene(fataGene: string) {
@@ -30,16 +29,9 @@ function predictPrimersFromFastaGene(fataGene: string) {
   );
 
   const reversePrimersWithPosisionsCorrected = correctPositionsInReversePrimers(
-    reversePrimers,
+    reversePrimersWithOneTarget,
     geneSequence.length
   );
-
-  console.log(reversePrimersWithPosisionsCorrected);
-
-  // console.log({
-  //   fowardPrimersWithOneTarget,
-  //   reversePrimersWithOneTarget,
-  // });
 
   const combinedPrimers = matchPrimers(
     fowardPrimersWithOneTarget,
@@ -47,20 +39,10 @@ function predictPrimersFromFastaGene(fataGene: string) {
     geneSequence.length
   );
 
-  console.log(combinedPrimers);
-
-  //.......................
-  // Não mexer daqui pra baixo ainda
-
-  const primers = getPrimersWithTheirBestReversePrimers(
-    fowardPrimersWithOneTarget,
-    geneSequence.length
-  );
-
   return {
     geneName,
     geneSequence,
-    primers,
+    primers: combinedPrimers,
   };
 }
 

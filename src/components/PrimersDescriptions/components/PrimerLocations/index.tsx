@@ -53,7 +53,7 @@ const PrimersLocations: React.FC<PrimersLocationsProps> = ({
 
   useEffect(() => {
     const lastPosition = reversePrimerPositions?.finalNucleotidePosition || 0;
-    const initialPosition = fowardPrimerPositions?.finalNucleotidePosition || 0;
+    const initialPosition = fowardPrimerPositions?.initialNucleotidePosition || 0;
 
     const fragmentsSize = lastPosition - initialPosition + 1;
     setAmplifiedFragmentsSize(fragmentsSize);
