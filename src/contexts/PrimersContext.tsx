@@ -12,7 +12,7 @@ const PrimersContext = createContext<PrimersContexProps>({
 export const PrimersProvider: React.FC = ({ children }) => {
   const [predictedPrimers, setPredictedPrimers] =
     useState<PredictedPrimersType>();
-    const [primerChoosed, setPrimerChoosed] = useState<number>(1)
+    const [primerChoosed, setPrimerChoosed] = useState<number>(0)
 
   return (
     <PrimersContext.Provider value={{ predictedPrimers, setPredictedPrimers, primerChoosed, setPrimerChoosed }}>

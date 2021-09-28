@@ -5,7 +5,7 @@ import SinglePrimer from "./components/SinglePrimer";
 import { PrimersContainer } from "./styles";
 
 const Primers: React.FC = () => {
-  const { predictedPrimers, setPrimerChoosed } = usePredictedPrimers();
+  const { predictedPrimers, setPrimerChoosed, primerChoosed } = usePredictedPrimers();
 
   const handlePrimerClick = (primerIndex: number) => {
     setPrimerChoosed(primerIndex);
@@ -15,7 +15,7 @@ const Primers: React.FC = () => {
     <PrimersContainer>
       {predictedPrimers?.primers.map((primer, primerIndex) => (
         <SinglePrimer
-          sense={"foward"}
+          choosed={primerChoosed === primerIndex}
           primer={primer}
           key={primerIndex}
           index={primerIndex}

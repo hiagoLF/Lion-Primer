@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type SinglePrimerContainerProps = {
-  primerSense: "foward" | "reverse";
+  choosed: boolean;
 };
 
 export const SinglePrimerContainer = styled.div<SinglePrimerContainerProps>`
@@ -11,8 +11,7 @@ export const SinglePrimerContainer = styled.div<SinglePrimerContainerProps>`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  background-color: ${({ primerSense }) =>
-    primerSense === "foward" ? "#1b7233" : "#206A5D"};
+  background-color: ${({ choosed }) => (choosed ? "#206A5D" : "#1b7233")};
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   font-size: 13px;
@@ -24,7 +23,7 @@ export const SinglePrimerContainer = styled.div<SinglePrimerContainerProps>`
 
   &:hover {
     opacity: 0.9;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   }
 
   span {
