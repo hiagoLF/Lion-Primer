@@ -1,0 +1,13 @@
+{
+  "oligonucleotide": ["A", "G", "T", "C", "G"],
+  "bendsResult": [
+    {
+      "fragmentOne": ["A", "G"],
+      "fragmentTwo": ["T", "C"]
+    },
+    {
+      "fragmentOne": ["G", "T"],
+      "fragmentTwo": ["C", "G"]
+    }
+  ]
+}

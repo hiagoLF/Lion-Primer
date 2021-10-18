@@ -1,3 +1,4 @@
+import getSecondaryStructures from "../secondaryStructures/getSecondaryStructures";
 import { getCGcontentAtFiveLastNucleotides } from "./getCGcontentAtFiveLastNucleotides";
 import { getGcPercentage } from "./getGcPercentage";
 import { getMeltingTemperature } from "./getMeltingTemperature";
@@ -17,6 +18,9 @@ export function getFragmentInformations(
   const subsequentRepeatedBases = getSubsequentRepeatedBases(fragment);
   const gcPercentage = getGcPercentage(fragment);
   const meltingTemperature = getMeltingTemperature(fragment);
+
+  // const secondaryStructures = getSecondaryStructures(fragment);
+  // console.log("secondaryStructures >>> ", secondaryStructures);
 
   const fragmentInformations = {
     sequence: fragment.join(""),

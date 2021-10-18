@@ -38,3 +38,8 @@ export type RemovePrimersWithMoreThanOneDnaTargetType = (
   geneSequence: string,
   complementaryGeneSequence: string
 ) => PrimersType[];
+
+export type BendType = {
+  fragmentOne: string[];
+  fragmentTwo: string[];
+};
