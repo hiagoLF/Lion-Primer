@@ -1,4 +1,4 @@
-import getSecondaryStructures from "../secondaryStructures/getSecondaryStructures";
+import getDimersDeltaGValues from "../secondaryStructures/getDimersDeltaGValues";
 import { getCGcontentAtFiveLastNucleotides } from "./getCGcontentAtFiveLastNucleotides";
 import { getGcPercentage } from "./getGcPercentage";
 import { getMeltingTemperature } from "./getMeltingTemperature";
