@@ -1,22 +1,8 @@
 import { PrimersType } from "../../../types/primers";
-import { getMeltingTemperature } from "../fragments/getMeltingTemperature";
 
-type MatchPrimersProps = {
-  fowardPrimers: PrimersType[];
-  reversePrimers: PrimersType[];
-  geneLength: number;
-};
-
-type MatchPrimersFunction = (
+export const matchPrimers = (
   fowardPrimers: PrimersType[],
-  reversePrimers: PrimersType[],
-  geneLength: number
-) => PrimersType[];
-
-export const matchPrimers: MatchPrimersFunction = (
-  fowardPrimers,
-  reversePrimers,
-  geneLength
+  reversePrimers: PrimersType[]
 ) => {
   const matchedPrimersAndUndefineds = fowardPrimers.map((fowardPrimer) => {
     var bestReversePrimer: PrimersType | undefined = undefined;
@@ -79,14 +65,17 @@ export const matchPrimers: MatchPrimersFunction = (
       return undefined;
     }
     return {
-      ...fowardPrimer,
+      fowardPrimer,
       reversePrimer: bestReversePrimer,
     };
   });
 
   const matchedPrimers = matchedPrimersAndUndefineds.filter((pp) => pp);
 
-  return matchedPrimers as PrimersType[];
+  return matchedPrimers as {
+    fowardPrimer: PrimersType;
+    reversePrimer: PrimersType;
+  }[];
 };
 
 function getDistanceBettween(first: PrimersType, second: PrimersType) {

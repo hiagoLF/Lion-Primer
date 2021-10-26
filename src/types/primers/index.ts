@@ -7,6 +7,7 @@ export type PrimersType = {
   subsequentDinucleotidesAmount: number;
   subsequentRepeatedBases: number;
   reversePrimer?: PrimersType;
+  dimersDeltaGValues: number[];
 };
 
 export type PrimersPositionsType = {
@@ -42,4 +43,9 @@ export type RemovePrimersWithMoreThanOneDnaTargetType = (
 export type BendType = {
   fragmentOne: string[];
   fragmentTwo: string[];
+};
+
+export type CombinedPrimersType = {
+  fowardPrimer: PrimersType;
+  reversePrimer: PrimersType;
 };

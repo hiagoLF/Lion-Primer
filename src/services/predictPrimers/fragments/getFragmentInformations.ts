@@ -19,8 +19,7 @@ export function getFragmentInformations(
   const gcPercentage = getGcPercentage(fragment);
   const meltingTemperature = getMeltingTemperature(fragment);
 
-  // const secondaryStructures = getSecondaryStructures(fragment);
-  // console.log("secondaryStructures >>> ", secondaryStructures);
+  const dimersDeltaGValues = getDimersDeltaGValues(fragment);
 
   const fragmentInformations = {
     sequence: fragment.join(""),
@@ -33,6 +32,7 @@ export function getFragmentInformations(
     subsequentRepeatedBases,
     gcPercentage,
     meltingTemperature,
+    dimersDeltaGValues,
   };
 
   return fragmentInformations;

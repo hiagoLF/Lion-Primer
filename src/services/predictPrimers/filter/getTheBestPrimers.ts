@@ -19,6 +19,17 @@ export function getTheBestPrimers(primersToFilter: PrimersType[]) {
     if (!(primer.meltingTemperature > 52 && primer.meltingTemperature < 58)) {
       return false;
     }
+
+    for (
+      let deltaGIndex = 0;
+      deltaGIndex < primer.dimersDeltaGValues.length;
+      deltaGIndex++
+    ) {
+      if (primer.dimersDeltaGValues[deltaGIndex] < -3) {
+        return false;
+      }
+    }
+
     return true;
   });
   return betterPrimers;
