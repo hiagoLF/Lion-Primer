@@ -1,7 +1,7 @@
 {
    "name": "lion-primer",
    "homepage": "https://hiagolf.github.io/Lion-Primer/",
-   "version": "0.3.2",
+   "version": "0.4.2",
    "private": true,
    "dependencies": {
       "@testing-library/jest-dom": "^5.11.4",
