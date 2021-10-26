@@ -3,19 +3,22 @@ import React from "react";
 import { SubmitPrimersButtonContainer } from "./styles";
 
 type SubmitPrimersButtonProps = {
-   available: boolean;
-   onClick: () => void;
+  available: boolean;
+  onClick: () => void;
 };
 
 const SubmitPrimersButton: React.FC<SubmitPrimersButtonProps> = ({
-   available,
-   onClick,
+  available,
+  onClick,
 }) => {
-   return (
-      <SubmitPrimersButtonContainer available={available} onClick={onClick}>
-         <span>Vai</span>
-      </SubmitPrimersButtonContainer>
-   );
+  return (
+    <SubmitPrimersButtonContainer
+      available={available}
+      onClick={available ? onClick : () => {}}
+    >
+      <span>Vai</span>
+    </SubmitPrimersButtonContainer>
+  );
 };
 
 export default SubmitPrimersButton;

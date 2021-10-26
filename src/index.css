@@ -31,6 +31,8 @@ code {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  min-width: 1038px;
+  min-height: 656px;
 }
 
 ::-webkit-scrollbar {

@@ -3,6 +3,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import PageHeader from "./components/PageHeader";
 import HomePage from "./pages/HomePage";
 import PrimersPage from "./pages/PrimersPage";
+import './index.css'
 
 function App() {
    return (
