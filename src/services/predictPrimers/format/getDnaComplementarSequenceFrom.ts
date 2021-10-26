@@ -11,6 +11,7 @@ export default function getDnaComplementarSequenceFrom(geneSequence: string) {
       case "C":
         return "G";
     }
+    return ''
   });
   complementarGeneArray.reverse();
   const complementaryGeneString = complementarGeneArray.join("");

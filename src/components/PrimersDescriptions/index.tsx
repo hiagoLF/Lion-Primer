@@ -10,19 +10,19 @@ const PrimersDescriptions: React.FC = () => {
   const [hitEffect, setHitEffect] = useState(false);
 
   useEffect(() => {
-    setHitEffect(true)
+    setHitEffect(true);
     setTimeout(() => {
-      setHitEffect(false)
-    }, 200)
+      setHitEffect(false);
+    }, 200);
   }, [primerChoosed]);
 
   return (
-    <PrimersDescriptionsContainer
-      hitEffect={hitEffect}
-    >
+    <PrimersDescriptionsContainer hitEffect={hitEffect}>
       <SinglePrimersDescriptionBox
         primerSense={"foward"}
-        primersDescription={predictedPrimers?.primers[primerChoosed]}
+        primersDescription={
+          predictedPrimers?.primers[primerChoosed].fowardPrimer
+        }
       />
 
       <SinglePrimersDescriptionBox
@@ -35,7 +35,7 @@ const PrimersDescriptions: React.FC = () => {
       <PrimersLocations
         geneSequence={predictedPrimers?.geneSequence}
         fowardPrimerPositions={
-          predictedPrimers?.primers[primerChoosed].positions
+          predictedPrimers?.primers[primerChoosed].fowardPrimer.positions
         }
         reversePrimerPositions={
           predictedPrimers?.primers[primerChoosed].reversePrimer?.positions

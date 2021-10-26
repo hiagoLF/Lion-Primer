@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ChooseFile from "./components/ChooseFile";
 import TypeSequenceOnKeyboard from "./components/TypeSequenceOnKeyboard";
 

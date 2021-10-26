@@ -18,7 +18,7 @@ export type PrimersPositionsType = {
 export type PredictedPrimersType = {
   geneName: string;
   geneSequence: string;
-  primers: PrimersType[];
+  primers: CombinedPrimersType[];
 };
 
 export type PrimersContexProps = {

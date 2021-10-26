@@ -16,7 +16,7 @@ const Primers: React.FC = () => {
       {predictedPrimers?.primers.map((primer, primerIndex) => (
         <SinglePrimer
           choosed={primerChoosed === primerIndex}
-          primer={primer}
+          primers={primer}
           key={primerIndex}
           index={primerIndex}
           onClick={handlePrimerClick}
