@@ -5,7 +5,6 @@ import getDnaComplementarSequenceFrom from "./format/getDnaComplementarSequenceF
 import { getGeneNameFromFasta } from "./format/getGeneNameFromFasta";
 import { getGeneSequenceFromFasta } from "./format/getGeneSequenceFromFasta";
 import findPrimersOnSingleSequence from "./fragments/findPrimersOnSingleSequence";
-import { getPrimersAnelingTemperatures } from "./fragments/getPrimersAnelingTemperatures";
 import reducePrimersNumberByDimersDeltaGValue from "./fragments/reducePrimersNumberByDimersDeltaGValue";
 import { matchPrimers } from "./primerComplement/matchPrimers";
 
@@ -27,7 +26,6 @@ async function predictPrimersFromFastaGene(fataGene: string): Promise<{
       );
       const fowardPrimers = findPrimersOnSingleSequence(geneSequence);
 
-
       const fowardPrimersWithOneTarget = removePrimersWithMoreThanOneDnaTarget(
         fowardPrimers,
         geneSequence,
@@ -45,12 +43,13 @@ async function predictPrimersFromFastaGene(fataGene: string): Promise<{
           reversePrimersWithOneTarget,
           geneSequence.length
         );
-
       
       const combinedPrimers = matchPrimers(
         fowardPrimersWithOneTarget,
         reversePrimersWithPosisionsCorrected
       );
+
+      console.log(combinedPrimers)
 
       const reducedPrimers =
         reducePrimersNumberByDimersDeltaGValue(combinedPrimers);
