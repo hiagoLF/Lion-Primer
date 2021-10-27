@@ -15,16 +15,17 @@ export const matchPrimers = (
       if (!distanceBetweenFAndR) {
         continue;
       }
-      const isFAndRTheSameMeltingTemperature =
-        fowardPrimer.meltingTemperature ===
-        reversePrimers[index].meltingTemperature;
-      if (!isFAndRTheSameMeltingTemperature) {
+      const isFAndRClosingMeltingTemperature = verifyClosingMeltingTemperature(
+        fowardPrimer.meltingTemperature,
+        reversePrimers[index].meltingTemperature
+      );
+      if (!isFAndRClosingMeltingTemperature) {
         continue;
       }
       if (distanceBetweenFAndR > 700) {
         continue;
       }
-      if (distanceBetweenFAndR < 450) {
+      if (distanceBetweenFAndR < 50) {
         continue;
       }
       if (!bestReversePrimer) {
@@ -86,4 +87,20 @@ function getDistanceBettween(first: PrimersType, second: PrimersType) {
     return undefined;
   }
   return distance;
+}
+
+function verifyClosingMeltingTemperature(
+  meltingOne: number,
+  meltingTwo: number
+) {
+  if (meltingOne > meltingTwo) {
+    if (meltingOne - meltingTwo <= 1) {
+      return true;
+    }
+  } else {
+    if (meltingTwo - meltingOne <= 1) {
+      return true;
+    }
+  }
+  return false;
 }

@@ -48,4 +48,5 @@ export type BendType = {
 export type CombinedPrimersType = {
   fowardPrimer: PrimersType;
   reversePrimer: PrimersType;
+  anelingTemperature?: number
 };

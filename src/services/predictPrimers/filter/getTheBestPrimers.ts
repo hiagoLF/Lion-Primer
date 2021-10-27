@@ -12,11 +12,11 @@ export function getTheBestPrimers(primersToFilter: PrimersType[]) {
       return false;
     }
     if (
-      !(primer.gcPercentage > 40 && primer.cgContentAtFiveLastNucleotides < 60)
+      !(primer.gcPercentage >= 40 && primer.cgContentAtFiveLastNucleotides <= 60)
     ) {
       return false;
     }
-    if (!(primer.meltingTemperature > 52 && primer.meltingTemperature < 58)) {
+    if (!(primer.meltingTemperature >= 52 && primer.meltingTemperature <= 58)) {
       return false;
     }
 
@@ -25,7 +25,7 @@ export function getTheBestPrimers(primersToFilter: PrimersType[]) {
       deltaGIndex < primer.dimersDeltaGValues.length;
       deltaGIndex++
     ) {
-      if (primer.dimersDeltaGValues[deltaGIndex] < -3) {
+      if (primer.dimersDeltaGValues[deltaGIndex] <= -3) {
         return false;
       }
     }
