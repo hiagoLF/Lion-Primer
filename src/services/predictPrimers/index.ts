@@ -4,9 +4,9 @@ import correctPositionsInReversePrimers from "./format/correctPositionsInReverse
 import getDnaComplementarSequenceFrom from "./format/getDnaComplementarSequenceFrom";
 import { getGeneNameFromFasta } from "./format/getGeneNameFromFasta";
 import { getGeneSequenceFromFasta } from "./format/getGeneSequenceFromFasta";
-import findPrimersOnSingleSequence from "./fragments/findPrimersOnSingleSequence";
-import reducePrimersNumberByDimersDeltaGValue from "./fragments/reducePrimersNumberByDimersDeltaGValue";
-import { matchPrimers } from "./primerComplement/matchPrimers";
+import findPrimers from "./fragments/findPrimers";
+import reducePrimersNumberByDimersDeltaGValueAndMelting from "./fragments/reducePrimersNumberByDimersDeltaGValueAndMelting";
+import filterPrimersAndMatch from "./primerComplement/filterPrimersAndMatch";
 
 async function predictPrimersFromFastaGene(fataGene: string): Promise<{
   geneName: string;
@@ -21,10 +21,10 @@ async function predictPrimersFromFastaGene(fataGene: string): Promise<{
       const complementaryGeneSequence =
         getDnaComplementarSequenceFrom(geneSequence);
 
-      const reversePrimers = findPrimersOnSingleSequence(
-        complementaryGeneSequence
+      const { reversePrimers, fowardPrimers } = findPrimers(
+        complementaryGeneSequence,
+        geneSequence
       );
-      const fowardPrimers = findPrimersOnSingleSequence(geneSequence);
 
       const fowardPrimersWithOneTarget = removePrimersWithMoreThanOneDnaTarget(
         fowardPrimers,
@@ -43,16 +43,14 @@ async function predictPrimersFromFastaGene(fataGene: string): Promise<{
           reversePrimersWithOneTarget,
           geneSequence.length
         );
-      
-      const combinedPrimers = matchPrimers(
+
+      const combinedPrimers = filterPrimersAndMatch(
         fowardPrimersWithOneTarget,
         reversePrimersWithPosisionsCorrected
       );
 
-      console.log(combinedPrimers)
-
       const reducedPrimers =
-        reducePrimersNumberByDimersDeltaGValue(combinedPrimers);
+        reducePrimersNumberByDimersDeltaGValueAndMelting(combinedPrimers);
 
       // const primersAndAnelingTemperatures =
       //   getPrimersAnelingTemperatures(combinedPrimers);

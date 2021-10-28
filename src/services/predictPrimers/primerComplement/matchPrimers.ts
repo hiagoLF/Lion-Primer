@@ -25,7 +25,7 @@ export const matchPrimers = (
       if (distanceBetweenFAndR > 700) {
         continue;
       }
-      if (distanceBetweenFAndR < 50) {
+      if (distanceBetweenFAndR < 70) {
         continue;
       }
       if (!bestReversePrimer) {
