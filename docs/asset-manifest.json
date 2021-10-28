@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Lion-Primer/static/css/main.da978ce1.chunk.css",
-    "main.js": "/Lion-Primer/static/js/main.9e402013.chunk.js",
-    "main.js.map": "/Lion-Primer/static/js/main.9e402013.chunk.js.map",
+    "main.js": "/Lion-Primer/static/js/main.03bbf5e1.chunk.js",
+    "main.js.map": "/Lion-Primer/static/js/main.03bbf5e1.chunk.js.map",
     "runtime-main.js": "/Lion-Primer/static/js/runtime-main.3ce45e8b.js",
     "runtime-main.js.map": "/Lion-Primer/static/js/runtime-main.3ce45e8b.js.map",
     "static/css/2.58a45539.chunk.css": "/Lion-Primer/static/css/2.58a45539.chunk.css",
@@ -24,6 +24,6 @@
     "static/css/2.58a45539.chunk.css",
     "static/js/2.b37591a9.chunk.js",
     "static/css/main.da978ce1.chunk.css",
-    "static/js/main.9e402013.chunk.js"
+    "static/js/main.03bbf5e1.chunk.js"
   ]
 }
