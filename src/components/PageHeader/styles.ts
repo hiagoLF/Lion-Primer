@@ -14,6 +14,7 @@ export const PageHeaderContainer = styled.div`
       #logo-container {
          display: flex;
          color: #f9f7f7;
+         cursor: pointer;
       }
 
       #header-buttons {
@@ -21,8 +22,10 @@ export const PageHeaderContainer = styled.div`
          font-size: 14px;
          font-weight: bold;
 
-         span {
+         a {
             margin-left: 20px;
+            text-decoration: none;
+            color: #f9f7f7;
          }
       }
    }
