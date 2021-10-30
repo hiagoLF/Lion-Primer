@@ -5,7 +5,7 @@ import dnaIcon from "../../assets/icons/dna-white.png";
 
 const PageHeader: React.FC = () => {
   
-  const handleLogoContainerClick = () => window.location.href = '/'
+  const handleLogoContainerClick = () => window.location.href = '#/'
 
   return (
     <PageHeaderContainer>

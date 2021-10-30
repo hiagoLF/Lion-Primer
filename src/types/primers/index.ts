@@ -1,13 +1,13 @@
 export type PrimersType = {
-  cgContentAtFiveLastNucleotides: number;
+  cgContentAtFiveLastNucleotides?: number;
   gcPercentage: number;
   meltingTemperature: number;
   positions: PrimersPositionsType;
   sequence: string;
-  subsequentDinucleotidesAmount: number;
+  subsequentDinucleotidesAmount?: number;
   subsequentRepeatedBases: number;
   reversePrimer?: PrimersType;
-  dimersDeltaGValues: number[];
+  dimersDeltaGValues?: number[];
 };
 
 export type PrimersPositionsType = {

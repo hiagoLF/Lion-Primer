@@ -11,11 +11,11 @@ export default function reducePrimersNumberByDimersDeltaGValueAndMelting(
   const combinedPrimersSortedByDeltaG = combinedPrimers.sort(
     (primersA, primersB) => {
       const primersADeltaGAmount =
-        primersA.fowardPrimer.dimersDeltaGValues.length +
-        primersA.reversePrimer.dimersDeltaGValues.length;
+        (primersA.fowardPrimer.dimersDeltaGValues?.length || 0) +
+        (primersA.reversePrimer.dimersDeltaGValues?.length || 0);
       const primersBDeltaGAmount =
-        primersB.fowardPrimer.dimersDeltaGValues.length +
-        primersB.reversePrimer.dimersDeltaGValues.length;
+        (primersB.fowardPrimer.dimersDeltaGValues?.length || 0) +
+        (primersB.reversePrimer.dimersDeltaGValues?.length || 0);
       if (primersADeltaGAmount <= primersBDeltaGAmount) {
         return 1;
       } else {

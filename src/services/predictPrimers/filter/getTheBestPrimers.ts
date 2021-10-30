@@ -5,7 +5,10 @@ export function getTheBestPrimers(
   attempt: number
 ) {
   let betterPrimers = primersToFilter.filter((primer) => {
-    if (primer.cgContentAtFiveLastNucleotides >= 3) {
+    if (
+      primer.cgContentAtFiveLastNucleotides &&
+      primer.cgContentAtFiveLastNucleotides >= 3
+    ) {
       return false;
     }
 
@@ -19,7 +22,7 @@ export function getTheBestPrimers(
 
     const isSubsequentDinucleotidesAmountSatisfied =
       verifIfIssubsequentDinucleotidesAmountSatisfied(
-        primer.subsequentDinucleotidesAmount,
+        primer.subsequentDinucleotidesAmount || 0,
         attempt
       );
     if (!isSubsequentDinucleotidesAmountSatisfied) {
@@ -45,10 +48,13 @@ export function getTheBestPrimers(
 
     for (
       let deltaGIndex = 0;
-      deltaGIndex < primer.dimersDeltaGValues.length;
+      deltaGIndex < (primer.dimersDeltaGValues?.length || 0);
       deltaGIndex++
     ) {
-      if (primer.dimersDeltaGValues[deltaGIndex] <= -3) {
+      if (
+        primer.dimersDeltaGValues &&
+        primer.dimersDeltaGValues[deltaGIndex] <= -3
+      ) {
         return false;
       }
     }
@@ -133,11 +139,9 @@ function verifIfIsMeltingTemperatureSatisfied(
   meltingTemperature: number,
   attempt: number
 ) {
-
   // Para a tentativa 2, 7, 8, 9, 10 e 11
   if (
-    (
-      attempt === 9 ||
+    (attempt === 9 ||
       attempt === 10 ||
       attempt === 11 ||
       attempt === 12 ||

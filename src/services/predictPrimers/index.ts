@@ -55,10 +55,31 @@ async function predictPrimersFromFastaGene(fataGene: string): Promise<{
       // const primersAndAnelingTemperatures =
       //   getPrimersAnelingTemperatures(combinedPrimers);
 
+      const cleanedPrimers = reducedPrimers.map((primers) => {
+        const { reversePrimer, fowardPrimer } = primers;
+
+        return {
+          fowardPrimer: {
+            ...fowardPrimer,
+            dimersDeltaGValues: undefined,
+            cgContentAtFiveLastNucleotides: undefined,
+            reversePrimer: undefined,
+            subsequentDinucleotidesAmount: undefined,
+          },
+          reversePrimer: {
+            ...reversePrimer,
+            dimersDeltaGValues: undefined,
+            cgContentAtFiveLastNucleotides: undefined,
+            reversePrimer: undefined,
+            subsequentDinucleotidesAmount: undefined,
+          },
+        };
+      });
+
       resolve({
         geneName,
         geneSequence,
-        primers: reducedPrimers,
+        primers: cleanedPrimers,
       });
     }, 2000);
   });
