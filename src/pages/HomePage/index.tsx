@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-// import predictPrimersFromFastaGene from "../../services/predictPrimers";
+import predictPrimersFromFastaGene from "../../services/predictPrimers";
 import FileReceiver from "./components/FileReceiver";
 import HomeHeader from "./components/HomeHeader";
 import SubmitPrimersButton from "./components/SubmitPrimersButton";
@@ -8,16 +8,6 @@ import ReactLoading from "react-loading";
 import { HomePageContainer } from "./styles";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { wrap } from "comlink";
-
-const worker = new Worker("../../services/predictPrimers/worker", {
-  name: "predictPrimersWorker",
-  type: "module",
-});
-const { predictPrimersFromFastaGene } =
-  wrap<
-    import("../../services/predictPrimers/worker").PredictPrimersFromFastaGene
-  >(worker);
 
 const HomePage: React.FC = () => {
   const [fileToSubmit, setFileToSubmit] = useState<Blob | undefined>(undefined);
@@ -51,9 +41,12 @@ const HomePage: React.FC = () => {
     const primersResult = await predictPrimersFromFastaGene(textToSubmit);
     if (primersResult.primers.length === 0) {
       setSubmiting(false);
-      toast.error("Não foi possível obter primers... Sequência muito Pequena", {
-        position: toast.POSITION.BOTTOM_CENTER,
-      });
+      toast.error(
+        "Não foi possível obter primers... Sequência muito Pequena",
+        {
+          position: toast.POSITION.BOTTOM_CENTER,
+        }
+      );
       return;
     }
     history.push(`/primers?primers=${JSON.stringify(primersResult)}`);

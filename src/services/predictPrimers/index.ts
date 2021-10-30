@@ -14,51 +14,53 @@ async function predictPrimersFromFastaGene(fataGene: string): Promise<{
   primers: CombinedPrimersType[];
 }> {
   return new Promise((resolve) => {
-    const geneName = getGeneNameFromFasta(fataGene);
-    const geneSequence = getGeneSequenceFromFasta(fataGene);
+    setTimeout(() => {
+      const geneName = getGeneNameFromFasta(fataGene);
+      const geneSequence = getGeneSequenceFromFasta(fataGene);
 
-    const complementaryGeneSequence =
-      getDnaComplementarSequenceFrom(geneSequence);
+      const complementaryGeneSequence =
+        getDnaComplementarSequenceFrom(geneSequence);
 
-    const { reversePrimers, fowardPrimers } = findPrimers(
-      complementaryGeneSequence,
-      geneSequence
-    );
-
-    const fowardPrimersWithOneTarget = removePrimersWithMoreThanOneDnaTarget(
-      fowardPrimers,
-      geneSequence,
-      complementaryGeneSequence
-    );
-
-    const reversePrimersWithOneTarget = removePrimersWithMoreThanOneDnaTarget(
-      reversePrimers,
-      complementaryGeneSequence,
-      geneSequence
-    );
-
-    const reversePrimersWithPosisionsCorrected =
-      correctPositionsInReversePrimers(
-        reversePrimersWithOneTarget,
-        geneSequence.length
+      const { reversePrimers, fowardPrimers } = findPrimers(
+        complementaryGeneSequence,
+        geneSequence
       );
 
-    const combinedPrimers = filterPrimersAndMatch(
-      fowardPrimersWithOneTarget,
-      reversePrimersWithPosisionsCorrected
-    );
+      const fowardPrimersWithOneTarget = removePrimersWithMoreThanOneDnaTarget(
+        fowardPrimers,
+        geneSequence,
+        complementaryGeneSequence
+      );
 
-    const reducedPrimers =
-      reducePrimersNumberByDimersDeltaGValueAndMelting(combinedPrimers);
+      const reversePrimersWithOneTarget = removePrimersWithMoreThanOneDnaTarget(
+        reversePrimers,
+        complementaryGeneSequence,
+        geneSequence
+      );
 
-    // const primersAndAnelingTemperatures =
-    //   getPrimersAnelingTemperatures(combinedPrimers);
+      const reversePrimersWithPosisionsCorrected =
+        correctPositionsInReversePrimers(
+          reversePrimersWithOneTarget,
+          geneSequence.length
+        );
 
-    resolve({
-      geneName,
-      geneSequence,
-      primers: reducedPrimers,
-    });
+      const combinedPrimers = filterPrimersAndMatch(
+        fowardPrimersWithOneTarget,
+        reversePrimersWithPosisionsCorrected
+      );
+
+      const reducedPrimers =
+        reducePrimersNumberByDimersDeltaGValueAndMelting(combinedPrimers);
+
+      // const primersAndAnelingTemperatures =
+      //   getPrimersAnelingTemperatures(combinedPrimers);
+
+      resolve({
+        geneName,
+        geneSequence,
+        primers: reducedPrimers,
+      });
+    }, 2000);
   });
 }
 
