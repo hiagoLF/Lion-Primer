@@ -1,31 +1,31 @@
 {
   "files": {
     "main.css": "/Lion-Primer/static/css/main.da978ce1.chunk.css",
-    "main.js": "/Lion-Primer/static/js/main.20c9cdd3.chunk.js",
-    "main.js.map": "/Lion-Primer/static/js/main.20c9cdd3.chunk.js.map",
-    "runtime-main.js": "/Lion-Primer/static/js/runtime-main.3ce45e8b.js",
-    "runtime-main.js.map": "/Lion-Primer/static/js/runtime-main.3ce45e8b.js.map",
+    "main.js": "/Lion-Primer/static/js/main.94dd9dc8.chunk.js",
+    "main.js.map": "/Lion-Primer/static/js/main.94dd9dc8.chunk.js.map",
+    "runtime-main.js": "/Lion-Primer/static/js/runtime-main.c2226182.js",
+    "runtime-main.js.map": "/Lion-Primer/static/js/runtime-main.c2226182.js.map",
     "static/css/2.58a45539.chunk.css": "/Lion-Primer/static/css/2.58a45539.chunk.css",
-    "static/js/2.b37591a9.chunk.js": "/Lion-Primer/static/js/2.b37591a9.chunk.js",
-    "static/js/2.b37591a9.chunk.js.map": "/Lion-Primer/static/js/2.b37591a9.chunk.js.map",
-    "static/js/3.ad9e404e.chunk.js": "/Lion-Primer/static/js/3.ad9e404e.chunk.js",
-    "static/js/3.ad9e404e.chunk.js.map": "/Lion-Primer/static/js/3.ad9e404e.chunk.js.map",
+    "static/js/2.fb7c8f50.chunk.js": "/Lion-Primer/static/js/2.fb7c8f50.chunk.js",
+    "static/js/2.fb7c8f50.chunk.js.map": "/Lion-Primer/static/js/2.fb7c8f50.chunk.js.map",
+    "static/js/3.80742df3.chunk.js": "/Lion-Primer/static/js/3.80742df3.chunk.js",
+    "static/js/3.80742df3.chunk.js.map": "/Lion-Primer/static/js/3.80742df3.chunk.js.map",
     "index.html": "/Lion-Primer/index.html",
     "static/css/2.58a45539.chunk.css.map": "/Lion-Primer/static/css/2.58a45539.chunk.css.map",
     "static/css/main.da978ce1.chunk.css.map": "/Lion-Primer/static/css/main.da978ce1.chunk.css.map",
-    "static/js/2.b37591a9.chunk.js.LICENSE.txt": "/Lion-Primer/static/js/2.b37591a9.chunk.js.LICENSE.txt",
-    "static/media/arrow-right.5051f98a.svg": "/Lion-Primer/static/media/arrow-right.5051f98a.svg",
+    "static/js/2.fb7c8f50.chunk.js.LICENSE.txt": "/Lion-Primer/static/js/2.fb7c8f50.chunk.js.LICENSE.txt",
     "static/media/cancel.f4921acd.svg": "/Lion-Primer/static/media/cancel.f4921acd.svg",
     "static/media/drop.0576442a.svg": "/Lion-Primer/static/media/drop.0576442a.svg",
     "static/media/hiago.92dde95c.jpeg": "/Lion-Primer/static/media/hiago.92dde95c.jpeg",
     "static/media/manoel.7f7a8ee4.jpeg": "/Lion-Primer/static/media/manoel.7f7a8ee4.jpeg",
-    "static/media/text.c860850f.svg": "/Lion-Primer/static/media/text.c860850f.svg"
+    "static/media/text.c860850f.svg": "/Lion-Primer/static/media/text.c860850f.svg",
+    "static/media/txt-white.377a9228.svg": "/Lion-Primer/static/media/txt-white.377a9228.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.3ce45e8b.js",
+    "static/js/runtime-main.c2226182.js",
     "static/css/2.58a45539.chunk.css",
-    "static/js/2.b37591a9.chunk.js",
+    "static/js/2.fb7c8f50.chunk.js",
     "static/css/main.da978ce1.chunk.css",
-    "static/js/main.20c9cdd3.chunk.js"
+    "static/js/main.94dd9dc8.chunk.js"
   ]
 }
