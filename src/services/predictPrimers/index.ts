@@ -8,6 +8,7 @@ import findPrimers from "./fragments/findPrimers";
 import reducePrimersNumberByDimersDeltaGValueAndMelting from "./fragments/reducePrimersNumberByDimersDeltaGValueAndMelting";
 import filterPrimersAndMatch from "./primerComplement/filterPrimersAndMatch";
 
+
 async function predictPrimersFromFastaGene(fataGene: string): Promise<{
   geneName: string;
   geneSequence: string;

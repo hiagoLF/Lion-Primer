@@ -9,6 +9,7 @@ import { HomePageContainer } from "./styles";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const HomePage: React.FC = () => {
   const [fileToSubmit, setFileToSubmit] = useState<Blob | undefined>(undefined);
   const [textToSubmit, setTextToSubmit] = useState<string>("");
@@ -22,12 +23,14 @@ const HomePage: React.FC = () => {
       const primersResult = await predictPrimersFromFastaGene(
         event.target?.result as string
       );
+      console.log(primersResult)
+      
       if (primersResult.primers.length === 0) {
         setSubmiting(false);
         toast.error(
-          "Não foi possível obter primers... Sequência muito Pequena",
+          "Não foi possível obter primers",
           {
-            position: toast.POSITION.BOTTOM_CENTER,
+            position: toast.POSITION.TOP_CENTER,
           }
         );
         return;
@@ -41,12 +44,9 @@ const HomePage: React.FC = () => {
     const primersResult = await predictPrimersFromFastaGene(textToSubmit);
     if (primersResult.primers.length === 0) {
       setSubmiting(false);
-      toast.error(
-        "Não foi possível obter primers... Sequência muito Pequena",
-        {
-          position: toast.POSITION.BOTTOM_CENTER,
-        }
-      );
+      toast.error("Não foi possível obter primers... Sequência muito Pequena", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
       return;
     }
     history.push(`/primers?primers=${JSON.stringify(primersResult)}`);
