@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const SubmitBlastButtonContainer = styled.button`
+export const DownloadPrimersButtonContainer = styled.button`
    background-color: #3f72af;
    height: 41px;
-   width: 219px;
    border-radius: 5px;
    display: flex;
    color: #f9f7f7;
@@ -22,10 +21,7 @@ export const SubmitBlastButtonContainer = styled.button`
       margin-left: 20px;
    }
 
-   #arrows {
-      margin-right: 13px;
-   }
    img {
-      height: 25px;
+      margin: 0 10px;
    }
 `;
