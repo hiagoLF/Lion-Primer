@@ -1,7 +1,7 @@
 {
   "name": "lion-primer",
   "homepage": "https://hiagolf.github.io/Lion-Primer/",
-  "version": "0.6.4",
+  "version": "0.5.4",
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
