@@ -15,12 +15,12 @@ const undertandingPCR = `## Como funciona uma PCR
   ![Separação das Fitas](https://raw.githubusercontent.com/hiagoLF/Lion-Primer/main/src/assets/images/denaturation.png)
   - Processo de Desnaturação
 
-  A segunda etapa é chamada de hibridização, onde os primeiros se ligam a suas regiões específicas no DNA. Para que isso ocorra, o equipamento diminui a temperatura para uma faixa de vai de 40 a 70 °C sendo chamada de temperatura de anelamento. A propósito, a temperatura de anelamento normalmente corresponde entre 3 e 5 ºC abaixo da temperatura de melting. A temperatura de melting corresponde a temperatura em que metade das fitas estão desnaturadas e a outra metade, pareada.
+  A segunda etapa é chamada de hibridização, onde os primers se ligam a suas regiões específicas no DNA. Para que isso ocorra, o equipamento diminui a temperatura para uma faixa de vai de 40 a 70 °C sendo chamada de temperatura de anelamento. A propósito, a temperatura de anelamento normalmente corresponde entre 3 e 5 ºC abaixo da temperatura de melting. A temperatura de melting corresponde a temperatura em que metade das fitas estão desnaturadas e a outra metade, pareadas.
   
   ![Hibridização](https://raw.githubusercontent.com/hiagoLF/Lion-Primer/main/src/assets/images/hybridisation.png)
   - Processo de Hibridização
 
-  A terceira etapa é chamada de alongamento pois é nela em que um novo DNA fita dupla surge. Para que isso ocorra, o equipamento eleva a temperatura para 72 °C que é ideal para o trabalho da Taq Polimerase. A enzima faz o trabalho de recolher cada nucleotídeo presente na solução e inserir no seu devido lugar o DNA. 
+  A terceira etapa é chamada de alongamento pois é nela em que um novo DNA fita dupla surge. Para que isso ocorra, o equipamento eleva a temperatura para 72 °C que é ideal para o trabalho da Taq Polimerase. A enzima faz o trabalho de recolher cada nucleotídeo presente na solução e inserir no seu devido lugar do DNA. 
   
   ![Alongamento](https://github.com/hiagoLF/Lion-Primer/blob/main/src/assets/images/elongation.png?raw=true)
   - Processo de Alongamento
