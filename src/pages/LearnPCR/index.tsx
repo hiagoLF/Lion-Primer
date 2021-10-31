@@ -1,17 +1,13 @@
 import React from "react";
 import { LearnPCRContainer } from "./styles";
-
-// import { Container } from './styles';
+import ReactMarkdown from "react-markdown";
+import undertandingPCR from "../../assets/texts/pcr";
 
 const LearnPCR: React.FC = () => {
   return (
     <LearnPCRContainer>
       <div id="post-area">
-        <h2>Como funciona uma PCR</h2>
-        <p>
-          Entender a PCR é uma coisa tão útil que quando você aprende, não tem
-          como desaprender... É só seguir o fluxo
-        </p>
+        <ReactMarkdown>{undertandingPCR}</ReactMarkdown>
       </div>
     </LearnPCRContainer>
   );

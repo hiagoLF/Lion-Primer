@@ -21,5 +21,20 @@ export const LearnPCRContainer = styled.div`
       margin-top: 30px;
       text-align: left;
     }
+
+    h3 {
+      width: 100%;
+      margin-top: 50px;
+    }
+
+    li {
+      width: 100%;
+    }
+
+    ul {
+      width: 100%;
+      margin-left: 37px;
+      margin-top: 10px;
+    }
   }
 `;
