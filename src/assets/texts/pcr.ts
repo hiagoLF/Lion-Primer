@@ -27,12 +27,16 @@ const undertandingPCR = `## Como funciona uma PCR
 
 
   Após isso, o termociclador repete tudo denovo, aplicando temperaturas favoráveis para a desnaturação, hibridização e alongamento. O ciclo se repete entre 20 e 40 vezes, até que haja uma quantidade de DNA suficiente para o trabalho desejado.
-  
+
+  ![Ciclos](https://github.com/hiagoLF/Lion-Primer/blob/main/src/assets/images/cycle.png?raw=true)
+  - Cíclos
+
+
   ![Termociclador](https://github.com/hiagoLF/Lion-Primer/blob/main/src/assets/images/thermocycler.jpg?raw=true)
   - Termociclador
 
 
-  Uma coisa bastante curiosa envolve a enzima Taq polimerase pois sabe-se que proteínas sofrem desnaturação em altas temperaturas, perdendo sua função. Sabendo que a enzima Taq polimerase é só mais uma proteína podemos chegar à questão: Como ela suporta as altas temperaturas a que são submetidas na PCR? Por um bom tempo, a PCR foi um procedimento bastante oneroso pois a polimerase utilizada era um tipo comum e que se degradava durante o processo, obrigando o pesquisador a abrir o equipamento e adicionar mais solução de enzimas polimerases na solução de PCR. Tudo mudou quando se descobriu a bactéria *Thermus aquaticus*, organismo que vive em fontes termais, locais que possuem água aquecida por processos de geotermia ou por ações vulcânicas. Tais locais, portanto, possuem altas temperaturas e, dessa forma, os organismos habitantes devem possuir alta resistência ao calor. Descobriu-se portanto uma nova polimerase termoestável (Resistente a temperatura) nessa bactéria, que foi extraída, estudada, nomeada de Taq polimerase e atualmente é indispensável para qualquer procedimento de PCR.
+  Uma coisa bastante curiosa envolve a enzima Taq polimerase pois sabe-se que proteínas sofrem desnaturação em altas temperaturas, perdendo sua função. Sabendo que a enzima Taq polimerase é só mais uma proteína podemos chegar à questão: Como ela suporta as altas temperaturas que é submetida na PCR? Por um bom tempo, a PCR foi um procedimento bastante oneroso pois a polimerase utilizada era um tipo comum e que se degradava durante o processo devido as altas temperaturas, obrigando o pesquisador a abrir o equipamento e adicionar mais solução de enzimas polimerases na solução de PCR. Tudo mudou quando se descobriu a bactéria *Thermus aquaticus*, organismo que vive em fontes termais, locais que possuem água aquecida por processos de geotermia ou por ações vulcânicas. Tais locais, portanto, possuem altas temperaturas e, dessa forma, os organismos habitantes devem possuir alta resistência ao calor. Descobriu-se portanto uma nova polimerase termoestável (Resistente a temperatura) nessa bactéria, que foi extraída, estudada, nomeada de Taq polimerase e atualmente é indispensável para qualquer procedimento de PCR.
   
   ![Fonte Termal](https://github.com/hiagoLF/Lion-Primer/blob/main/src/assets/images/termal.jpg?raw=true)
   - Fonte Termal
