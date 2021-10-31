@@ -6,6 +6,7 @@ export const LearnPCRContainer = styled.div`
   overflow-y: scroll;
   display: flex;
   align-items: flex-start;
+  padding-bottom: 100px;
 
   #post-area {
     max-width: 800px;
@@ -35,6 +36,10 @@ export const LearnPCRContainer = styled.div`
       width: 100%;
       margin-left: 37px;
       margin-top: 10px;
+    }
+
+    img {
+      width: 100%;
     }
   }
 `;

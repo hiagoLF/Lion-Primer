@@ -12,24 +12,32 @@ const undertandingPCR = `## Como funciona uma PCR
   
   Os ingredientes misturados são colocados no termociclador que inicialmente aplicam uma temperatura de 94°C para que haja separação entre as fitas do DNA molde em um processo chamado de desnaturação. Agora, o que antes era chamado de DNA fita dupla dá origem a dois DNAs de fita simples.
   
-  ![Separação das Fitas](image.jpg)
+  ![Separação das Fitas](https://raw.githubusercontent.com/hiagoLF/Lion-Primer/main/src/assets/images/denaturation.png)
+  - Processo de Desnaturação
 
   A segunda etapa é chamada de hibridização, onde os primeiros se ligam a suas regiões específicas no DNA. Para que isso ocorra, o equipamento diminui a temperatura para uma faixa de vai de 40 a 70 °C sendo chamada de temperatura de anelamento. A propósito, a temperatura de anelamento normalmente corresponde entre 3 e 5 ºC abaixo da temperatura de melting. A temperatura de melting corresponde a temperatura em que metade das fitas estão desnaturadas e a outra metade, pareada.
   
-  ![Hibridização](image.jpg)
+  ![Hibridização](https://raw.githubusercontent.com/hiagoLF/Lion-Primer/main/src/assets/images/hybridisation.png)
+  - Processo de Hibridização
 
   A terceira etapa é chamada de alongamento pois é nela em que um novo DNA fita dupla surge. Para que isso ocorra, o equipamento eleva a temperatura para 72 °C que é ideal para o trabalho da Taq Polimerase. A enzima faz o trabalho de recolher cada nucleotídeo presente na solução e inserir no seu devido lugar o DNA. 
   
-  ![Alongamento](image.jpg)
+  ![Alongamento](https://github.com/hiagoLF/Lion-Primer/blob/main/src/assets/images/elongation.png?raw=true)
+  - Processo de Alongamento
+
 
   Após isso, o termociclador repete tudo denovo, aplicando temperaturas favoráveis para a desnaturação, hibridização e alongamento. O ciclo se repete entre 20 e 40 vezes, até que haja uma quantidade de DNA suficiente para o trabalho desejado.
   
-  ![Ciclos](image.jpg)
+  ![Termociclador](https://github.com/hiagoLF/Lion-Primer/blob/main/src/assets/images/thermocycler.jpg?raw=true)
+  - Termociclador
+
 
   Uma coisa bastante curiosa envolve a enzima Taq polimerase pois sabe-se que proteínas sofrem desnaturação em altas temperaturas, perdendo sua função. Sabendo que a enzima Taq polimerase é só mais uma proteína podemos chegar à questão: Como ela suporta as altas temperaturas a que são submetidas na PCR? Por um bom tempo, a PCR foi um procedimento bastante oneroso pois a polimerase utilizada era um tipo comum e que se degradava durante o processo, obrigando o pesquisador a abrir o equipamento e adicionar mais solução de enzimas polimerases na solução de PCR. Tudo mudou quando se descobriu a bactéria *Thermus aquaticus*, organismo que vive em fontes termais, locais que possuem água aquecida por processos de geotermia ou por ações vulcânicas. Tais locais, portanto, possuem altas temperaturas e, dessa forma, os organismos habitantes devem possuir alta resistência ao calor. Descobriu-se portanto uma nova polimerase termoestável (Resistente a temperatura) nessa bactéria, que foi extraída, estudada, nomeada de Taq polimerase e atualmente é indispensável para qualquer procedimento de PCR.
   
-  ![Fonte Termal](termal.jpg)
-  
+  ![Fonte Termal](https://github.com/hiagoLF/Lion-Primer/blob/main/src/assets/images/termal.jpg?raw=true)
+  - Fonte Termal
+
+
   ### Referências
   
   - KADRI, Karim. Polymerase Chain Reaction (PCR): principle and applications. Synthetic Biology - New Interdisciplinary Science, [S.L.], v. -, n. 9, 12 fev. 2020. IntechOpen.

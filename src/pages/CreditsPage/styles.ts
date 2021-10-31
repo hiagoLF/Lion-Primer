@@ -7,6 +7,7 @@ export const CreditsPageContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
+  padding-bottom: 100px;
 
   #profile-container {
     display: flex;
